@@ -1,0 +1,20 @@
+{
+  "name": "odin-book",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy-server:heroku": "heroku git:remote -a odin-book-server && git subtree push --prefix server heroku master",
+    "deploy-client:heroku": "heroku git:remote -a odin-book-client && git subtree push --prefix client heroku master"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Asdaois/odin-book.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Asdaois/odin-book/issues"
+  },
+  "homepage": "https://github.com/Asdaois/odin-book#readme"
+}
