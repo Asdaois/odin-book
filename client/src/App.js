@@ -1,8 +1,10 @@
+import BasicRedux from "./examples/BasicRedux";
 
 const App = () => {
   return (
     <div className="">
-      Welcome log-in for start
+      <div className="">Log in to continue</div>
+      <BasicRedux />
     </div>
   );
 }
