@@ -12,6 +12,6 @@ app.get("/", (req, res) => {
   res.json("Nothing here");
 });
 
-app.listen(3001 || process.env.PORT, () => {
+app.listen(process.env.PORT || 3001, () => {
   console.log("Server is running on port 3001!");
 });
