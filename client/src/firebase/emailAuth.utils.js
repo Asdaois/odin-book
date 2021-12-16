@@ -9,11 +9,12 @@ import { firebaseApp } from "./firebase.utils";
 const auth = getAuth(firebaseApp);
 
 /**
- * @param {{email, password, displayName}} newUser 
+ * @param {{email, password, displayName}} newUser
  * @returns user
  */
 export const signUpEmail = async (newUser) => {
-  const { email, password, displayName }= newUser
+  console.log(newUser);
+  const { email, password, displayName } = newUser;
   try {
     const userCredential = await createUserWithEmailAndPassword(
       auth,
@@ -22,20 +23,22 @@ export const signUpEmail = async (newUser) => {
     );
     await updateProfile(userCredential.user, { displayName });
     return userCredential.user.toJSON();
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    return { error: error.message };
   }
 };
 
-export const signInEmail = async (email, password) => {
+export const signInEmail = async (user) => {
+  const { email, password } = user;
+  console.log(user)
   try {
     const userCredential = await signInWithEmailAndPassword(
       auth,
       email,
       password
     );
-    return userCredential.user;
-  } catch (err) {
-    console.log(err);
+    return userCredential.user.toJSON();
+  } catch (error) {
+    return { error: error.message };
   }
 };

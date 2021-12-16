@@ -1,13 +1,14 @@
 import React from "react";
-import { SignUp } from "../components/authentication";
+import { LogIn, SignUp } from "../components/authentication";
 
-function SignInPage() {
+const SignInPage = () => {
   return (
     <div>
       <div className="">Log in to continue</div>
       <SignUp />
+      <LogIn />
     </div>
   );
-}
+};
 
 export default SignInPage;

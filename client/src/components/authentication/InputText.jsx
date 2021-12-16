@@ -10,6 +10,7 @@ function InputText({formik, name, displayText, type}) {
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         value={formik.values[name]}
+        required
       />
       <div className="text-red-500">{formik.errors[name] || null}</div>
     </div>

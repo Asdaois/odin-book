@@ -4,8 +4,8 @@ import { useDispatch } from "react-redux";
 import { signUpUser } from "../../features/user/user.thunks";
 import InputText from "./InputText";
 
-function SignUp() {
-  const dispatch = useDispatch()
+const SignUp = () => {
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -15,20 +15,16 @@ function SignUp() {
       confirmPassword: "",
     },
     onSubmit: (values) => {
-      dispatch(signUpUser(values))
+      dispatch(signUpUser(values));
     },
     validate: (values) => {
       let errors = {};
-      if (!values.displayName) errors.displayName = "Required";
-      if (!values.email) errors.email = "Required";
-      if (!values.password) errors.password = "Required";
-      if (!values.confirmPassword) errors.confirmPassword = "Required";
       if (values.password !== values.confirmPassword)
         errors.confirmPassword = "Passwords are different";
       return errors;
     },
     validateOnChange: false,
-    validateOnBlur: false
+    validateOnBlur: false,
   });
 
   return (
@@ -39,7 +35,12 @@ function SignUp() {
           displayText={"Display Name"}
           name={"displayName"}
         />
-        <InputText formik={formik} displayText={"Email"} name={"email"} />
+        <InputText
+          formik={formik}
+          displayText={"Email"}
+          name={"email"}
+          type={"email"}
+        />
         <InputText
           formik={formik}
           displayText={"Password"}
@@ -56,6 +57,6 @@ function SignUp() {
       </form>
     </div>
   );
-}
+};
 
 export default SignUp;

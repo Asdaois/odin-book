@@ -13,7 +13,9 @@ const App = () => {
   }
 
   if (user.status === "success") {
-    return <div className=""> This is the init page</div>;
+    return (
+      <div className="">{user.current.displayName} This is the init page</div>
+    );
   }
 };
 
