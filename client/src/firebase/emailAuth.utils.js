@@ -16,7 +16,7 @@ export const signUpEmail = async (email, password, displayName) => {
       password
     );
     await updateProfile(userCredential.user, { displayName });
-    return { email, displayName };
+    return userCredential.user;
   } catch (err) {
     console.log(err);
   }
@@ -29,7 +29,7 @@ export const signInEmail = async (email, password) => {
       email,
       password
     );
-    return (await userCredential).user;
+    return userCredential.user;
   } catch (err) {
     console.log(err);
   }

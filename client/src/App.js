@@ -1,6 +1,5 @@
 import { useEffect } from "react";
-import BasicRedux from "./examples/BasicRedux";
-import { signInEmail, signUpEmail } from "./firebase/emailAuth.utils";
+import SignInPage from "./pages/SignInPage";
 
 const App = () => {
   useEffect(() => {
@@ -10,6 +9,7 @@ const App = () => {
   return (
     <div className="">
       <div className="">Log in to continue</div>
+      <SignInPage />
     </div>
   );
 };
