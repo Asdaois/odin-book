@@ -1,5 +1,5 @@
 import React from "react";
-import { LogIn, SignUp } from "../components/authentication";
+import { FacebookLogIn, GoogleLogIn, LogIn, SignUp } from "../components/authentication";
 
 const SignInPage = () => {
   return (
@@ -7,6 +7,8 @@ const SignInPage = () => {
       <div className="">Log in to continue</div>
       <SignUp />
       <LogIn />
+      <FacebookLogIn />
+      <GoogleLogIn />
     </div>
   );
 };

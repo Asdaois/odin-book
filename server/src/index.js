@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import morgan from "morgan";
+import { connectToDatabase } from "./database.js";
 
 const app = express();
 
@@ -25,4 +26,5 @@ app.get("/", (req, res) => {
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`\x1b Server is running on port ${port}!\x1b`);
+  connectToDatabase();
 });
