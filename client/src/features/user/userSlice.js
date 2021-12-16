@@ -21,7 +21,6 @@ export const userSlice = createSlice({
       state.status = "success";
     },
     [signInUser.rejected]: (state, action) => {
-      // TODO: Dar un bonito mensaje indicando que paso
       state.status = "failed";
     },
   },
