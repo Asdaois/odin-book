@@ -8,7 +8,12 @@ import { firebaseApp } from "./firebase.utils";
 
 const auth = getAuth(firebaseApp);
 
-export const signUpEmail = async (email, password, displayName) => {
+/**
+ * @param {{email, password, displayName}} newUser 
+ * @returns user
+ */
+export const signUpEmail = async (newUser) => {
+  const { email, password, displayName }= newUser
   try {
     const userCredential = await createUserWithEmailAndPassword(
       auth,
@@ -16,7 +21,7 @@ export const signUpEmail = async (email, password, displayName) => {
       password
     );
     await updateProfile(userCredential.user, { displayName });
-    return userCredential.user;
+    return userCredential.user.toJSON();
   } catch (err) {
     console.log(err);
   }

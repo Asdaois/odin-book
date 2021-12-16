@@ -1,17 +1,20 @@
-import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import SignInPage from "./pages/SignInPage";
 
 const App = () => {
-  useEffect(() => {
-    return () => {};
-  }, []);
+  const user = useSelector((state) => state.user);
 
-  return (
-    <div className="">
-      <div className="">Log in to continue</div>
-      <SignInPage />
-    </div>
-  );
+  if (user.status === "pending" || user.status === "failed") {
+    return (
+      <div className="">
+        <SignInPage />
+      </div>
+    );
+  }
+
+  if (user.status === "success") {
+    return <div className=""> This is the init page</div>;
+  }
 };
 
 export default App;

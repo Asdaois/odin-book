@@ -1,8 +1,12 @@
 import { useFormik } from "formik";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { signUpUser } from "../../features/user/user.thunks";
 import InputText from "./InputText";
 
 function SignUp() {
+  const dispatch = useDispatch()
+
   const formik = useFormik({
     initialValues: {
       displayName: "",
@@ -10,8 +14,8 @@ function SignUp() {
       password: "",
       confirmPassword: "",
     },
-    onsubmit: (values) => {
-      console.log(values);
+    onSubmit: (values) => {
+      dispatch(signUpUser(values))
     },
     validate: (values) => {
       let errors = {};
