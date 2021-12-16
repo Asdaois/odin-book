@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import { connectToDatabase } from "./database.js";
+import { userRouter } from "../routes/userRouter.js";
 
 const app = express();
 
@@ -22,6 +23,8 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.json("Nothing here");
 });
+
+app.use("/users", userRouter);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
