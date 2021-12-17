@@ -1,4 +1,5 @@
-import { Schema, model } from "mongoose";
+import pkg from "mongoose";
+const { Schema, model } = pkg;
 
 const PostSchema = new Schema({
   userID: {
@@ -25,4 +26,6 @@ const PostSchema = new Schema({
   ],
 });
 
-export default model("Post", PostSchema);
+const Post = model("Post", PostSchema);
+
+export default Post;

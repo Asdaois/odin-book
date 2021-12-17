@@ -1,4 +1,5 @@
-import { Schema, model } from "mongoose";
+import pkg from "mongoose";
+const { Schema, model } = pkg;
 
 // Para pruebas
 // Aun no esta decidido si se usara en el producto final
@@ -18,4 +19,6 @@ const NewsSchema = new Schema({
   ],
 });
 
-export default model("News", NewsSchema);
+const News = model("News", NewsSchema);
+
+export default News;

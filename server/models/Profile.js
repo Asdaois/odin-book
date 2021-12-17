@@ -1,4 +1,5 @@
-import { Schema, model } from "mongoose";
+import pkg from "mongoose";
+const { Schema, model } = pkg;
 
 const ProfileSchema = new Schema({
   userID: {
@@ -24,4 +25,6 @@ const ProfileSchema = new Schema({
   friends: [{ type: Schema.Types.ObjectId, ref: "User" }],
 });
 
-export default model("Profile", ProfileSchema);
+const Profile = model("Profile", ProfileSchema);
+
+export default Profile;

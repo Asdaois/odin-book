@@ -1,4 +1,5 @@
-import { Schema, model } from "mongoose";
+import pkg from "mongoose";
+const { Schema, model } = pkg;
 
 const NotificationSchema = new Schema({
   userID: {
@@ -12,4 +13,6 @@ const NotificationSchema = new Schema({
   },
 });
 
-export default model("Notifications", NotificationSchema);
+const Notifications = model("Notifications", NotificationSchema);
+
+export default Notifications;
