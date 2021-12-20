@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { signInUser, signUpUser } from "./user.thunks";
+import {
+  authenticationFailure,
+  authenticationSuccess,
+  signInUser,
+  signUpUser,
+} from "./user.thunks";
 
 export const userSlice = createSlice({
   name: "user",
@@ -8,21 +13,10 @@ export const userSlice = createSlice({
     status: "pending",
   },
   extraReducers: {
-    [signUpUser.fulfilled]: (state, action) => {
-      state.current = action.payload;
-      state.status = "success";
-      console.log(action);
-    },
-    [signUpUser.rejected]: (state) => {
-      state.status = "failed";
-    },
-    [signInUser.fulfilled]: (state, action) => {
-      state.current = action.payload;
-      state.status = "success";
-    },
-    [signInUser.rejected]: (state, action) => {
-      state.status = "failed";
-    },
+    [signUpUser.fulfilled]: authenticationSuccess,
+    [signUpUser.rejected]: authenticationFailure,
+    [signInUser.fulfilled]: authenticationSuccess,
+    [signInUser.rejected]: authenticationFailure,
   },
 });
 

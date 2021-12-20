@@ -21,3 +21,17 @@ export const signInUser = createAsyncThunk(
     return user;
   }
 );
+/**
+ * 
+ * @param {} state 
+ * @param {} action 
+ */
+export const authenticationSuccess = (state, action) => {
+  state.current = action.payload;
+  state.status = "success";
+  console.log({ action, action });
+};
+
+export const authenticationFailure = (state) => {
+  state.status = "failed";
+};

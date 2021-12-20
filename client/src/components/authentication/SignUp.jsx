@@ -2,11 +2,12 @@ import { useFormik } from "formik";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { signUpUser } from "../../features/user/user.thunks";
+import Form from "./Form";
+import FormTitle from "./FormTitle";
 import InputText from "./InputText";
 
 const SignUp = () => {
   const dispatch = useDispatch();
-
   const formik = useFormik({
     initialValues: {
       displayName: "",
@@ -28,33 +29,37 @@ const SignUp = () => {
   });
 
   return (
-    <div>
-      <form onSubmit={formik.handleSubmit}>
+    <div
+      className="max-w-sm mx-auto rounded-lg shadow-xl overflow-hidden p-6 
+      space-y-10"
+    >
+      <Form onSubmit={formik.handleSubmit}>
+        <FormTitle title="Sign-up" />
         <InputText
           formik={formik}
-          displayText={"Display Name"}
-          name={"displayName"}
+          displayText="Display Name"
+          name="displayName"
         />
         <InputText
           formik={formik}
-          displayText={"Email"}
-          name={"email"}
-          type={"email"}
+          displayText="Email"
+          name="email"
+          type="email"
         />
         <InputText
           formik={formik}
-          displayText={"Password"}
-          name={"password"}
-          type={"password"}
+          displayText="Password"
+          name="password"
+          type="password"
         />
         <InputText
           formik={formik}
-          displayText={"Confirm Password"}
-          name={"confirmPassword"}
-          type={"password"}
+          displayText="Confirm Password"
+          name="confirmPassword"
+          type="password"
         />
         <button type="submit">Sign Up</button>
-      </form>
+      </Form>
     </div>
   );
 };

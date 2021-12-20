@@ -1,14 +1,20 @@
 import React from "react";
-import { FacebookLogIn, GoogleLogIn, LogIn, SignUp } from "../components/authentication";
+import {
+  FacebookLogIn,
+  GoogleLogIn,
+  LogIn,
+  SignUp,
+} from "../components/authentication";
 
 const SignInPage = () => {
   return (
-    <div>
-      <div className="">Log in to continue</div>
-      <SignUp />
-      <LogIn />
-      <FacebookLogIn />
-      <GoogleLogIn />
+    <div className="flex justify-center w-2/3 m-auto">
+      <div className="flex-1 ">
+        <LogIn />
+      </div>
+      <div className="flex-1">
+        <SignUp />
+      </div>
     </div>
   );
 };
