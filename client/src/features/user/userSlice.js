@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getCurrentUser } from "../../firebase/googleAuth.utils";
 import {
   authenticationFailure,
   authenticationSuccess,
@@ -12,6 +13,13 @@ export const userSlice = createSlice({
     current: null,
     status: "pending",
   },
+  reducers: {
+    updateUser: (state, action) => {
+      console.log(action.payload);
+      state.current = action.payload;
+      state.status = "success"
+    },
+  },
   extraReducers: {
     [signUpUser.fulfilled]: authenticationSuccess,
     [signUpUser.rejected]: authenticationFailure,
@@ -20,4 +28,5 @@ export const userSlice = createSlice({
   },
 });
 
+export const { updateUser } = userSlice.actions;
 export default userSlice.reducer;
