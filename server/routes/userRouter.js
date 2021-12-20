@@ -4,6 +4,7 @@ import {
   getUser,
   getProfile,
   getFriendList,
+  sendFriendRequest,
   createNewUser,
   updateUser,
   deleteUser,
@@ -18,9 +19,7 @@ userRouter.get("/profile/:id", getProfile);
 //User friend list route
 userRouter.get("/friends/:id", getFriendList);
 //Send friend request route
-userRouter.post("/request/:id", (req, res, next) => {
-  res.status(200).json({ message: `Request sent to ${req.params.id}` });
-});
+userRouter.post("/request/:req_user_id/:rec_user_id", sendFriendRequest);
 //Create new user route
 userRouter.post("/create", createNewUser);
 //Update user route

@@ -1,5 +1,6 @@
 import User from "../models/User.js";
 import Profile from "../models/Profile.js";
+import FriendRequest from "../models/FriendRequest.js";
 
 /**
  * @param {import("express").Request} req
@@ -45,6 +46,32 @@ const getFriendList = (req, res, next) => {
   //     select: ["firstName", "lastName", "gender"],
   //   });
   res.status(200).json({ message: "User's friends" });
+};
+
+/**
+ * @param {import("express").Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
+const sendFriendRequest = async (req, res, next) => {
+  const { req_user_id, rec_user_id } = req.params;
+
+  // const friendRequest = new FriendRequest({
+  //   requestingUserID: req_user_id,
+  //   receivingUserID: rec_user_id,
+  //   status: "Pending",
+  // });
+
+  // try {
+  //   await friendRequest.save();
+  //   res.json({ message: `Request sent to ${rec_user_id} from ${req_user_id}` });
+  // } catch (err) {
+  //   next(err);
+  // }
+
+  res
+    .status(200)
+    .json({ message: `Request sent to ${rec_user_id} from ${req_user_id}` });
 };
 
 /**
@@ -129,6 +156,7 @@ export {
   getUser,
   getProfile,
   getFriendList,
+  sendFriendRequest,
   createNewUser,
   updateUser,
   deleteUser,
