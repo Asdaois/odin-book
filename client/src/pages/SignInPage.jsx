@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  FacebookLogIn,
-  GoogleLogIn,
-  LogIn,
-  SignUp,
-} from "../components/authentication";
+import { LogIn, SignUp } from "../components/authentication";
 
 const SignInPage = () => {
   return (
