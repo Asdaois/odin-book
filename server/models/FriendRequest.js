@@ -7,7 +7,7 @@ const FriendRequestSchema = new Schema({
     required: true,
     ref: "User",
   },
-  recievingUserID: {
+  receivingUserID: {
     type: Schema.Types.ObjectId,
     required: true,
     ref: "User",
