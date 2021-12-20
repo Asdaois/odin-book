@@ -11,6 +11,10 @@ const NotificationSchema = new Schema({
     type: String,
     required: true,
   },
+  read: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const Notifications = model("Notifications", NotificationSchema);
