@@ -1,4 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { userApi } from "../../api/usersApi";
 import { signInEmail, signUpEmail } from "../../firebase/emailAuth.utils";
 
 export const signUpUser = createAsyncThunk(
@@ -23,6 +24,7 @@ export const signInUser = createAsyncThunk(
 );
 
 export const authenticationSuccess = (state, action) => {
+  userApi.create(action.payload);
   state.current = action.payload;
   state.status = "success";
 };

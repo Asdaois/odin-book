@@ -16,8 +16,9 @@ const App = () => {
         dispatch(updateUser(userLogged.toJSON()))
       }
     })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  console.log(user)
+
   if (user.status === "pending" || user.status === "failed") {
     return (
       <div className="">
