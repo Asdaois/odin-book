@@ -85,12 +85,12 @@ const createNewUser = async (req, res, next) => {
     const firstName = splitName[0];
     const lastName = splitName[1];
     const user = new User({
+      _id: uid,
       firstName,
       lastName,
       dateOfBirth,
       email,
       gender,
-      uid,
     });
     try {
       await user.save();
