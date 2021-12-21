@@ -10,6 +10,10 @@ export const signUpUser = createAsyncThunk(
   async (newUser) => {
     const user = await signUpEmail(newUser);
     if (user.error) throw new Error(user.error);
+
+    user.dateOfBirth = newUser.dateOfBirth;
+    user.gender = newUser.gender;
+    console.log(user)
     return user;
   }
 );
