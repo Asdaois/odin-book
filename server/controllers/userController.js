@@ -79,29 +79,28 @@ const sendFriendRequest = async (req, res, next) => {
  * @param {NextFunction} next
  */
 const createNewUser = async (req, res, next) => {
-  // const {
-  //   firstName,
-  //   lastName,
-  //   dateOfBirth,
-  //   email,
-  //   password,
-  //   gender,
-  // } = req.body;
-  // const user = new User({
-  //   firstName,
-  //   lastName,
-  //   dateOfBirth,
-  //   email,
-  //   password,
-  //   gender,
-  // });
-  // try {
-  //   await user.save();
-  //   res.json({ message: "User created" });
-  // } catch (err) {
-  //   next(err);
-  // }
-  res.status(200).json({ message: "User created" });
+  const { displayName, dateOfBirth, email, gender, uid } = req.body;
+  if (displayName !== undefined) {
+    const splitName = displayName.split(" ");
+    const firstName = splitName[0];
+    const lastName = splitName[1];
+    const user = new User({
+      firstName,
+      lastName,
+      dateOfBirth,
+      email,
+      gender,
+      uid,
+    });
+    try {
+      await user.save();
+      res.json({ message: "User created" });
+    } catch (err) {
+      next(err);
+    }
+  } else {
+    res.json({ message: "Error creating the user" });
+  }
 };
 
 /**
