@@ -1,42 +1,29 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { logOutUser, updateUser } from "./features/user/userSlice";
-import { auth, signOutUSer } from "./firebase/firebase.utils";
-import SignInPage from "./pages/SignInPage";
+import { auth } from "./firebase/firebase.utils";
+import Router from "./Router";
 
 const App = () => {
-  const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   useEffect(() => {
     onAuthStateChanged(auth, (userLogged) => {
       if (userLogged) {
         dispatch(updateUser(userLogged.toJSON()));
+        navigate("/")
       } else {
-        dispatch(logOutUser())
+        dispatch(logOutUser());
+        navigate("/login")
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (user.status === "pending" || user.status === "failed") {
-    return (
-      <div className="">
-        <SignInPage />
-      </div>
-    );
-  }
-
-  if (user.status === "success") {
-    return (
-      <div className="">
-        <div className="">{user.current.displayName} This is the init page</div>
-        <button onClick={() => { signOutUSer() }}>Sign Out</button>
-      </div>
-    );
-  }
+  return <Router />;
 };
 
 export default App;
