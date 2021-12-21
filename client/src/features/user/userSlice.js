@@ -13,7 +13,11 @@ export const userSlice = createSlice({
     status: "pending",
   },
   reducers: {
-    updateUser: authenticationSuccess
+    updateUser: authenticationSuccess,
+    logOutUser: (state) => {
+      state.current = null;
+      state.status = "pending";
+    },
   },
   extraReducers: {
     [signUpUser.fulfilled]: authenticationSuccess,
@@ -23,5 +27,5 @@ export const userSlice = createSlice({
   },
 });
 
-export const { updateUser } = userSlice.actions;
+export const { updateUser, logOutUser } = userSlice.actions;
 export default userSlice.reducer;

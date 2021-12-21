@@ -8,7 +8,6 @@ import FriendRequest from "../models/FriendRequest.js";
  * @param {NextFunction} next
  */
 const getUser = (req, res, next) => {
-  // Las busquedas en la base de datos estaran comentadas hasta que se implemente la base
   // await User.find({ _id: req.params.id }).exec((err, result) => {
   //     if (err) {
   //       return next(err);

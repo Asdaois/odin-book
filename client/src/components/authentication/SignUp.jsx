@@ -14,6 +14,8 @@ const SignUp = () => {
       email: "",
       password: "",
       confirmPassword: "",
+      dateBirth: Date.now(),
+      gender: "",
     },
     onSubmit: (values) => {
       dispatch(signUpUser(values));
@@ -58,6 +60,16 @@ const SignUp = () => {
           name="confirmPassword"
           type="password"
         />
+        <select
+          className="block appearance-none w-full bg-gray-200 border 
+         border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight
+         focus:outline-none focus:bg-white focus:border-gray-500"
+          id="grid-state"
+        >
+          {["Male", "Female", "Other"].map((gender, index) => (
+            <option key={index}>{gender}</option>
+          ))}
+        </select>
         <button type="submit">Sign Up</button>
       </Form>
     </div>
