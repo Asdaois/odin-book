@@ -3,6 +3,7 @@ import cors from "cors";
 import morgan from "morgan";
 import { connectToDatabase } from "./database.js";
 import { userRouter } from "../routes/userRouter.js";
+import { postRouter } from "../routes/postRouter.js";
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/users", userRouter);
+app.use("/posts", postRouter);
 
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
