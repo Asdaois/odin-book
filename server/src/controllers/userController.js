@@ -84,15 +84,15 @@ const createNewUser = async (req, res, next) => {
     const splitName = displayName.split(" ");
     const firstName = splitName[0];
     const lastName = splitName[1];
-    const user = new User({
-      _id: uid,
-      firstName,
-      lastName,
-      dateOfBirth,
-      email,
-      gender,
-    });
     try {
+      const user = new User({
+        _id: uid,
+        firstName,
+        lastName,
+        dateOfBirth,
+        email,
+        gender,
+      });
       await user.save();
       res.json({ message: "User created" });
     } catch (err) {
