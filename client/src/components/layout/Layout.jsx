@@ -1,6 +1,6 @@
 import React from "react";
 import { Logout } from "../authentication";
-import { DisplayName, ProfilePicture } from "../user";
+import { NameWithPicture } from "../user";
 import "./layout.css";
 
 const Layout = ({ children }) => {
@@ -10,15 +10,12 @@ const Layout = ({ children }) => {
         {/* <!-- fixed-width --> */}
         <div className="w-fixed w-full flex-shrink flex-grow-0 px-4">
           <div className="sticky top-0 p-4 w-full min-h-full bg-slate-200 rounded-xl">
-            <div className="flex items-center gap-2">
-              <ProfilePicture />
-              <DisplayName />
-            </div>
+            <NameWithPicture />
             <Logout />
             {/* <!-- nav goes here --> */}
           </div>
         </div>
-        <main role="main" className="w-full flex-grow pt-1 px-3">
+        <main role="main" className="w-full flex-grow pt-1 px-16">
           {/* <!-- fluid-width: main content goes here --> */}
           {children}
         </main>
