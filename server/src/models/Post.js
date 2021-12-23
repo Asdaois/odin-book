@@ -11,6 +11,7 @@ const PostSchema = new Schema({
   content: {
     image: String,
     text: String,
+    required: true
   },
   likes: { type: Number },
   comments: [
