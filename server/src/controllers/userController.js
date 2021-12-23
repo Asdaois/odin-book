@@ -14,7 +14,7 @@ const getUser = (req, res, next) => {
   //     }
   //     res.json({ result });
   //   });
-  res.status(200).json({ message: "User Index", chad: req.body });
+  res.status(200).json({ message: "User Index" });
 };
 
 /**

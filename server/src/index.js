@@ -2,8 +2,8 @@ import express from "express";
 import cors from "cors";
 import morgan from "morgan";
 import { connectToDatabase } from "./database.js";
-import { userRouter } from "../routes/userRouter.js";
-import { postRouter } from "../routes/postRouter.js";
+import { userRouter } from "./routes/userRouter.js";
+import { postRouter } from "./routes/postRouter.js";
 
 const app = express();
 
