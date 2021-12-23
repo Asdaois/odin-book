@@ -6,8 +6,8 @@ const UserSchema = new Schema({
   firstName: { type: String, required: true, minLength: 3 },
   lastName: { type: String, required: true, minLength: 3 },
   dateOfBirth: { type: Date, required: true },
-  email: { type: String },
-  gender: { type: String, enum: ["Male", "Female", "Other"] },
+  email: { type: String, required: true },
+  gender: { type: String, enum: ["Male", "Female", "Other"], required: true },
 });
 
 const User = model("User", UserSchema);
