@@ -80,13 +80,18 @@ const sendFriendRequest = async (req, res, next) => {
  */
 const createNewUser = async (req, res, next) => {
   const { displayName, dateOfBirth, email, gender, uid } = req.body;
-  if (displayName !== undefined) {
+
+  let user = null;
+
+  if (uid) user = await User.findOne({ uid });
+
+  if (displayName !== undefined && !user) {
     const splitName = displayName.split(" ");
     const firstName = splitName[0];
     const lastName = splitName[1];
     try {
       const user = new User({
-        _id: uid,
+        uid: uid,
         firstName,
         lastName,
         dateOfBirth,
@@ -150,6 +155,21 @@ const deleteUser = async (req, res, next) => {
   res.status(200).json({ message: "User deleted" });
 };
 
+/**
+ * Get User With firebase uid
+ * @param {import("express").Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
+const getUserWithUid = async (req, res, next) => {
+  try {
+    const user = await User.findOne({ uid: req.params.uid });
+    res.json(user);
+  } catch (err) {
+    next(err);
+  }
+};
+
 export {
   getUser,
   getProfile,
@@ -158,4 +178,5 @@ export {
   createNewUser,
   updateUser,
   deleteUser,
+  getUserWithUid,
 };
