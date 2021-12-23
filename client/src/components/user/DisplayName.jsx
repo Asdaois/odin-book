@@ -6,7 +6,7 @@ const DisplayName = () => {
 
   return (
     <div>
-      {user.current.displayName}
+      {user.current?.displayName}
     </div>
   )
 }
