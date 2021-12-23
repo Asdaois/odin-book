@@ -16,8 +16,8 @@ const App = () => {
         dispatch(updateUser(userLogged.toJSON()));
         navigate("/")
       } else {
-        dispatch(logOutUser());
         navigate("/login")
+        dispatch(logOutUser());
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
