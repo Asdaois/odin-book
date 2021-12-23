@@ -5,7 +5,7 @@ const DisplayName = () => {
   const user = useSelector(state => state.user)
 
   return (
-    <div>
+    <div className='capitalize'>
       {user.current?.displayName}
     </div>
   )

@@ -1,6 +1,6 @@
 import React from "react";
 import { Logout } from "../authentication";
-import DisplayName from "../user";
+import { DisplayName, ProfilePicture } from "../user";
 import "./layout.css";
 
 const Layout = ({ children }) => {
@@ -10,7 +10,10 @@ const Layout = ({ children }) => {
         {/* <!-- fixed-width --> */}
         <div className="w-fixed w-full flex-shrink flex-grow-0 px-4">
           <div className="sticky top-0 p-4 w-full min-h-full bg-slate-200 rounded-xl">
-            <DisplayName />
+            <div className="flex items-center gap-2">
+              <ProfilePicture />
+              <DisplayName />
+            </div>
             <Logout />
             {/* <!-- nav goes here --> */}
           </div>
