@@ -1,0 +1,79 @@
+import Post from "../models/Post.js";
+
+const getPost = async (req, res, next) => {
+  //   await Post.findById(req.params.id).exec((err, result) => {
+  //     if (err) {
+  //       return next(err);
+  //     }
+  //     res.json({ message: `Post found`, post: result });
+  //   });
+  res.json({ message: `Post ${req.params.id} page` });
+};
+
+const createPost = async (req, res, next) => {
+  //   const { userID, date, content } = req.params;
+
+  //   const post = new Post({
+  //     userID,
+  //     date,
+  //     content,
+  //   });
+
+  //   try {
+  //     await post.save();
+  //     res.json({ message: "Post created!" });
+  //   } catch (err) {
+  //     if (err) return next(err);
+  //   }
+
+  res.json({ message: "Post created!" });
+};
+
+const updatePost = async (req, res, next) => {
+  //   const { content, postID } = req.params;
+
+  //   try {
+  //     const post = await Post.findById(postID).exec();
+  //     post = {
+  //       content,
+  //     };
+  //     await post.save();
+  //     res.json({ message: `Post ${req.params.id} updated!` });
+  //   } catch (err) {
+  //     if (err) return next(err);
+  //   }
+
+  res.json({ message: `Post ${req.params.id} updated!` });
+};
+
+const likePost = async (req, res, next) => {
+  //   const { postID, userID, liked } = req.params;
+  //   try {
+  //     const post = await Post.findByIdAndUpdate(
+  //       postID,
+  //       {
+  //         $addToSet: { likedBy: { userID, liked } },
+  //       },
+  //       (err) => {
+  //         if (err) return next(err);
+  //         res.json({ message: `Post liked` });
+  //       }
+  //     );
+  //   } catch (err) {
+  //     if (err) return next(err);
+  //   }
+  res.json({ message: "Post liked!" });
+};
+
+const deletePost = async (req, res, next) => {
+  //   await Post.findByIdAndDelete(req.params.id, (err) => {
+  //     if (err) {
+  //       return next(err);
+  //     }
+  //     res.json({ message: `Post ${req.params.id} deleted!` });
+  //   });
+
+  res.json({ message: `Post ${req.params.id} deleted!` });
+};
+
+export { getPost, createPost, updatePost, likePost, deletePost };
