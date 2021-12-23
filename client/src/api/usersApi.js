@@ -3,7 +3,12 @@ import axiosApi from "./axiosApi";
 const create = async (user) => {
   const response = await axiosApi.post("users/create", user);
   // TODO: Handle the response?
-  console.log(response.data)
+  console.log(response.data);
 };
 
-export const userApi = { create };
+const search = async (string) => {
+  const response = await axiosApi.get(`users/search/${string}`);
+  return response.data.result;
+};
+
+export const userApi = { create, search };

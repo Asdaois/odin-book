@@ -4,6 +4,7 @@ import {
   getUser,
   getProfile,
   getFriendList,
+  getSearchResult,
   sendFriendRequest,
   createNewUser,
   updateUser,
@@ -18,6 +19,8 @@ userRouter.get("/:id", getUser);
 userRouter.get("/profile/:id", getProfile);
 //User friend list route
 userRouter.get("/friends/:id", getFriendList);
+//Search user
+userRouter.get("/search/:name", getSearchResult);
 //Send friend request route
 userRouter.post("/request/:req_user_id/:rec_user_id", sendFriendRequest);
 //Create new user route

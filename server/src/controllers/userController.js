@@ -52,6 +52,34 @@ const getFriendList = (req, res, next) => {
  * @param {Response} res
  * @param {NextFunction} next
  */
+const getSearchResult = async (req, res, next) => {
+  const { name } = req.params;
+
+  const resultFirstName = await User.find({
+    firstName: { $regex: name },
+  })
+    .select(["firstName", "lastName"])
+    .exec();
+  const resultLastName = await User.find({ lastName: { $regex: name } })
+    .select(["firstName", "lastName"])
+    .exec();
+
+  const concatResult = resultFirstName.concat(resultLastName);
+
+  const result = Array.from(
+    new Set(concatResult.map((value) => value._id))
+  ).map((id) => {
+    return concatResult.find((value) => value._id === id);
+  });
+
+  res.json({ message: `searched ${name}`, result });
+};
+
+/**
+ * @param {import("express").Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
 const sendFriendRequest = async (req, res, next) => {
   const { req_user_id, rec_user_id } = req.params;
 
@@ -80,6 +108,7 @@ const sendFriendRequest = async (req, res, next) => {
  */
 const createNewUser = async (req, res, next) => {
   const { displayName, dateOfBirth, email, gender, uid } = req.body;
+  console.log(req.body);
   if (displayName !== undefined) {
     const splitName = displayName.split(" ");
     const firstName = splitName[0];
@@ -154,6 +183,7 @@ export {
   getUser,
   getProfile,
   getFriendList,
+  getSearchResult,
   sendFriendRequest,
   createNewUser,
   updateUser,
