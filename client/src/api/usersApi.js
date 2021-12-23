@@ -11,4 +11,9 @@ const search = async (string) => {
   return response.data.result;
 };
 
-export const userApi = { create, search };
+const getByUid = async (uid) => {
+  const response = await axiosApi.get(`users/firebase/${uid}`);
+  // TODO: Handle response and error
+  return response.data;
+};
+export const userApi = { create, getByUid, search };

@@ -9,12 +9,15 @@ import {
   createNewUser,
   updateUser,
   deleteUser,
+  getUserWithUid,
 } from "../controllers/userController.js";
 
 // -- USER ROUTES --
 
 //Base route
 userRouter.get("/:id", getUser);
+//Get user with firebase uid
+userRouter.get("/firebase/:uid", getUserWithUid);
 //Profile route
 userRouter.get("/profile/:id", getProfile);
 //User friend list route

@@ -1,6 +1,6 @@
 import React from "react";
 
-const AutoSizeTextArea = () => {
+const AutoSizeTextArea = ({name}) => {
   const calcHeight = (value) => {
     let numberOfLineBreaks = (value.match(/\n/g) || []).length;
     // min-height + lines x line-height + padding + border
@@ -13,8 +13,7 @@ const AutoSizeTextArea = () => {
 
   return (
     <textarea
-      type="text"
-      name=""
+      name={name}
       maxLength={200}
       placeholder="What's on your mind?"
       className="overflow-hidden w-full bg-transparent focus-visible:outline-none text-lg"
