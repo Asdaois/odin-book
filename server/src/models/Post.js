@@ -1,37 +1,38 @@
 import pkg from "mongoose";
 const { Schema, model } = pkg;
 
-const PostSchema = new Schema({
-  userID: {
-    type: Schema.Types.ObjectId,
-    required: true,
-    ref: "User",
-  },
-  date: { type: Date },
-  content: {
-    image: String,
-    text: String,
-    required: true
-  },
-  likes: { type: Number },
-  comments: [
-    {
-      userID: Schema.Types.ObjectId,
-      content: {
-        image: String,
-        text: String,
+const PostSchema = new Schema(
+  {
+    userID: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: "User",
+    },
+    content: {
+      image: String,
+      text: String,
+    },
+    likes: { type: Number },
+    comments: [
+      {
+        userID: Schema.Types.ObjectId,
+        content: {
+          image: String,
+          text: String,
+        },
+        likes: Number,
+        date: Date,
       },
-      likes: Number,
-      date: Date,
-    },
-  ],
-  likedBy: [
-    {
-      userID: Schema.Types.ObjectId,
-      liked: Boolean,
-    },
-  ],
-});
+    ],
+    likedBy: [
+      {
+        userID: Schema.Types.ObjectId,
+        liked: Boolean,
+      },
+    ],
+  },
+  { timestamps: true }
+);
 
 const Post = model("Post", PostSchema);
 
