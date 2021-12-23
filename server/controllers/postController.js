@@ -1,5 +1,10 @@
 import Post from "../models/Post.js";
 
+/**
+ * @param {import("express").Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
 const getPost = async (req, res, next) => {
   //   await Post.findById(req.params.id).exec((err, result) => {
   //     if (err) {
@@ -10,6 +15,11 @@ const getPost = async (req, res, next) => {
   res.json({ message: `Post ${req.params.id} page` });
 };
 
+/**
+ * @param {import("express").Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
 const createPost = async (req, res, next) => {
   //   const { userID, date, content } = req.params;
 
@@ -29,6 +39,11 @@ const createPost = async (req, res, next) => {
   res.json({ message: "Post created!" });
 };
 
+/**
+ * @param {import("express").Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
 const updatePost = async (req, res, next) => {
   //   const { content, postID } = req.params;
 
@@ -46,6 +61,11 @@ const updatePost = async (req, res, next) => {
   res.json({ message: `Post ${req.params.id} updated!` });
 };
 
+/**
+ * @param {import("express").Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
 const likePost = async (req, res, next) => {
   //   const { postID, userID, liked } = req.params;
   //   try {
@@ -65,6 +85,11 @@ const likePost = async (req, res, next) => {
   res.json({ message: "Post liked!" });
 };
 
+/**
+ * @param {import("express").Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
 const deletePost = async (req, res, next) => {
   //   await Post.findByIdAndDelete(req.params.id, (err) => {
   //     if (err) {
