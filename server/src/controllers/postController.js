@@ -21,22 +21,18 @@ const getPost = async (req, res, next) => {
  * @param {NextFunction} next
  */
 const createPost = async (req, res, next) => {
+  console.log(req.body);
   //   const { userID, date, content } = req.params;
 
-  //   const post = new Post({
-  //     userID,
-  //     date,
-  //     content,
-  //   });
-
-  //   try {
-  //     await post.save();
-  //     res.json({ message: "Post created!" });
-  //   } catch (err) {
-  //     if (err) return next(err);
-  //   }
-
-  res.json({ message: "Post created!" });
+  const post = new Post({
+    ...req.body,
+  });
+  try {
+    await post.save();
+    res.json({ message: "Post created!" });
+  } catch (err) {
+    if (err) return next(err);
+  }
 };
 
 /**
