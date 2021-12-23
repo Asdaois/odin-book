@@ -6,8 +6,8 @@ const create = async (user) => {
   console.log(response.data);
 };
 
-const search = async (string) => {
-  const response = await axiosApi.get(`users/search/${string}`);
+const search = async (string, uid) => {
+  const response = await axiosApi.get(`users/search/${string}/${uid}`);
   return response.data.result;
 };
 

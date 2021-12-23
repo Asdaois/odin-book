@@ -53,25 +53,14 @@ const getFriendList = (req, res, next) => {
  * @param {NextFunction} next
  */
 const getSearchResult = async (req, res, next) => {
-  const { name } = req.params;
+  const { name, userUID } = req.params;
 
-  const resultFirstName = await User.find({
-    firstName: { $regex: name },
+  const result = await User.find({
+    uid: { $not: { $regex: userUID } },
+    $or: [{ firstName: { $regex: name } }, { lastName: { $regex: name } }],
   })
     .select(["firstName", "lastName"])
     .exec();
-  const resultLastName = await User.find({ lastName: { $regex: name } })
-    .select(["firstName", "lastName"])
-    .exec();
-
-  const concatResult = resultFirstName.concat(resultLastName);
-
-  const result = Array.from(
-    new Set(concatResult.map((value) => value._id))
-  ).map((id) => {
-    return concatResult.find((value) => value._id === id);
-  });
-
   res.json({ message: `searched ${name}`, result });
 };
 
