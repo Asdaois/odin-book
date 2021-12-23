@@ -21,7 +21,7 @@ const LogIn = () => {
 
   return (
     <div className="max-w-sm mx-auto rounded-lg shadow-xl overflow-hidden p-6 
-      space-y-10">
+      space-y-10 h-full">
       <Form onSubmit={formik.handleSubmit}>
         <FormTitle title="Log-in" />
         <InputText
