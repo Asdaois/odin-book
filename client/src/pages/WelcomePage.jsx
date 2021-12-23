@@ -1,6 +1,5 @@
 import React from "react";
 import Layout from "../components/layout";
-import { signOutUSer } from "../firebase/firebase.utils";
 
 export const WelcomePage = () => {
   return (
