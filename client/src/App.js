@@ -8,15 +8,15 @@ import Router from "./Router";
 
 const App = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     onAuthStateChanged(auth, (userLogged) => {
       if (userLogged) {
         dispatch(updateUser(userLogged.toJSON()));
-        navigate("/")
+        navigate("/");
       } else {
-        navigate("/login")
+        navigate("/login");
         dispatch(logOutUser());
       }
     });
