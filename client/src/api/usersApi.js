@@ -16,4 +16,10 @@ const getByUid = async (uid) => {
   // TODO: Handle response and error
   return response.data;
 };
-export const userApi = { create, getByUid, search };
+
+const sentFriendRequest = async (userID, friendID) => {
+  const response = await axiosApi.post(`users/request/${userID}/${friendID}`);
+  return console.log(response.data);
+};
+
+export const userApi = { create, getByUid, search, sentFriendRequest };

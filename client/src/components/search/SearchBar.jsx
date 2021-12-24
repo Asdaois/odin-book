@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { userApi } from "../../api/usersApi.js";
+import FriendRequestButton from "../friend_request";
 
 export const SearchBar = () => {
   const [searchValue, setSearchValue] = useState("");
@@ -35,9 +36,10 @@ export const SearchBar = () => {
       <p>Results:</p>
       {searchResult.map((value, key) => {
         return (
-          <p key={key}>
-            {value.firstName} {value.lastName}
-          </p>
+          <div key={key}>
+            {value.firstName} {value.lastName} [
+            <FriendRequestButton friendID={value._id} />]
+          </div>
         );
       })}
     </div>

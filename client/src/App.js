@@ -15,7 +15,6 @@ const App = () => {
     onAuthStateChanged(auth, async (userLogged) => {
       if (userLogged) {
         const user = await userApi.getByUid(userLogged.uid);
-        console.log(user)
         dispatch(updateUser(user));
         navigate("/")
       } else {

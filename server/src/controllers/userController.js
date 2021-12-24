@@ -70,24 +70,24 @@ const getSearchResult = async (req, res, next) => {
  * @param {NextFunction} next
  */
 const sendFriendRequest = async (req, res, next) => {
-  const { req_user_id, rec_user_id } = req.params;
+  const { userID, friendID } = req.params;
 
   // const friendRequest = new FriendRequest({
-  //   requestingUserID: req_user_id,
-  //   receivingUserID: rec_user_id,
+  //   requestingUserID: userID,
+  //   receivingUserID: friendID,
   //   status: "Pending",
   // });
 
   // try {
   //   await friendRequest.save();
-  //   res.json({ message: `Request sent to ${rec_user_id} from ${req_user_id}` });
+  //   res.json({ message: `Request sent to ${friendID} from ${userID}` });
   // } catch (err) {
   //   next(err);
   // }
 
   res
     .status(200)
-    .json({ message: `Request sent to ${rec_user_id} from ${req_user_id}` });
+    .json({ message: `Request sent to ${friendID} from ${userID}` });
 };
 
 /**
