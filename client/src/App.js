@@ -2,21 +2,23 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { userApi } from "./api/usersApi";
 import { logOutUser, updateUser } from "./features/user/userSlice";
 import { auth } from "./firebase/firebase.utils";
 import Router from "./Router";
 
 const App = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   useEffect(() => {
-    onAuthStateChanged(auth, (userLogged) => {
+    onAuthStateChanged(auth, async (userLogged) => {
       if (userLogged) {
-        dispatch(updateUser(userLogged.toJSON()));
-        navigate("/");
+        const user = await userApi.getByUid(userLogged.uid);
+        dispatch(updateUser(user));
+        navigate("/")
       } else {
-        navigate("/login");
+        navigate("/login")
         dispatch(logOutUser());
       }
     });
