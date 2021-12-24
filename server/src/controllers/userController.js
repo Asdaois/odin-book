@@ -72,22 +72,27 @@ const getSearchResult = async (req, res, next) => {
 const sendFriendRequest = async (req, res, next) => {
   const { userID, friendID } = req.params;
 
-  // const friendRequest = new FriendRequest({
-  //   requestingUserID: userID,
-  //   receivingUserID: friendID,
-  //   status: "Pending",
-  // });
+  try {
+    const result = await FriendRequest.findOne({
+      requestingUserID: userID,
+      receivingUserID: friendID,
+    }).exec();
 
-  // try {
-  //   await friendRequest.save();
-  //   res.json({ message: `Request sent to ${friendID} from ${userID}` });
-  // } catch (err) {
-  //   next(err);
-  // }
+    if (!result) {
+      const friendRequest = new FriendRequest({
+        requestingUserID: userID,
+        receivingUserID: friendID,
+        status: "Pending",
+      });
 
-  res
-    .status(200)
-    .json({ message: `Request sent to ${friendID} from ${userID}` });
+      await friendRequest.save();
+      res.json({ message: `Request sent to ${friendID} from ${userID}` });
+    } else {
+      res.json({ message: `Friend request already sent` });
+    }
+  } catch (err) {
+    next(err);
+  }
 };
 
 /**

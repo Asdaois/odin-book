@@ -20,6 +20,6 @@ const FriendRequestSchema = new Schema({
   },
 });
 
-const FriendRequest = model("Notifications", FriendRequestSchema);
+const FriendRequest = model("FriendRequest", FriendRequestSchema);
 
 export default FriendRequest;
