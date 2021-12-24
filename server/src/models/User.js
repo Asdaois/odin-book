@@ -7,7 +7,11 @@ const UserSchema = new Schema({
   dateOfBirth: { type: Date },
   email: { type: String, required: true },
   gender: { type: String, enum: ["Male", "Female", "Other"] },
-  uid: { type: String}, // Firebase login
+  uid: { type: String }, // Firebase login
+});
+
+UserSchema.virtual("displayName").get(() => {
+  return `${this.firstName} ${this.lastName}`;
 });
 
 const User = model("User", UserSchema);
