@@ -10,7 +10,7 @@ const UserSchema = new Schema({
   uid: { type: String }, // Firebase login
 });
 
-UserSchema.virtual("displayName").get(() => {
+UserSchema.virtual("displayName").get(function () {
   return `${this.firstName} ${this.lastName}`;
 });
 
