@@ -10,9 +10,11 @@ const UserSchema = new Schema({
   uid: { type: String }, // Firebase login
 });
 
-UserSchema.virtual("displayName").get(function () {
+UserSchema.virtual("displayName").get(function() {
   return `${this.firstName} ${this.lastName}`;
 });
+
+UserSchema.set('toJSON', {getters: true})
 
 const User = model("User", UserSchema);
 
