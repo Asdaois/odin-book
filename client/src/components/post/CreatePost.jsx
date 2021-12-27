@@ -3,7 +3,7 @@ import { useState } from "react";
 import PostCreation from "./PostCreation";
 import PostForm from "./PostForm";
 
-const Post = () => {
+const CreatePost = () => {
   const [showForm, setShowForm] = useState(false);
   return (
     <div className="w-full bg-slate-200 p-4 rounded-xl transition-height duration-300">
@@ -16,4 +16,4 @@ const Post = () => {
   );
 };
 
-export default Post;
+export default CreatePost;

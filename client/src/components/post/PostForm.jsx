@@ -28,6 +28,7 @@ const PostForm = ({ onExit }) => {
     }
     
     postApi.create(post);
+    onExit()
   };
 
   return (
