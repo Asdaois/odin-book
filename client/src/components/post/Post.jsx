@@ -1,7 +1,7 @@
 import React from "react";
 import ProfilePicture from "../user/profile_picture/ProfilePicture";
-import TimeAgo from "timeago-react";
 import { Comment, Like } from "../icons";
+import TimeAgo from 'timeago-react'
 
 const Post = ({ post }) => {
   return (
