@@ -22,5 +22,8 @@
   "homepage": "https://github.com/Asdaois/odin-book#readme",
   "devDependencies": {
     "concurrently": "^6.5.1"
+  },
+  "dependencies": {
+    "timeago-react": "^3.0.4"
   }
 }
