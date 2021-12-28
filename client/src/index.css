@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .button {
+    @apply hover:bg-slate-400 hover:text-gray-100 rounded-lg px-4 py-2 text-center
+  }
+}

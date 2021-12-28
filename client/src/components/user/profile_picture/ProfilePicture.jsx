@@ -1,11 +1,11 @@
 import React from "react";
 import emptyProfile from "./emptyProfile.png";
 
-const ProfilePicture = () => {
+const ProfilePicture = ({pictureLink}) => {
   return (
     <div>
       <img
-        src={emptyProfile}
+        src={pictureLink || emptyProfile}
         alt="profile"
         className="rounded-full h-10 w-10 aspect-auto"
       />

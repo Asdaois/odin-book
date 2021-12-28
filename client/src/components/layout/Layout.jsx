@@ -8,11 +8,13 @@ const Layout = ({ children }) => {
     <div>
       <div className="w-full flex flex-col sm:flex-row flex-wrap sm:flex-nowrap py-4 flex-grow min-h-screen">
         {/* <!-- fixed-width --> */}
-        <div className="w-fixed w-full flex-shrink flex-grow-0 px-4">
-          <div className="sticky top-0 p-4 w-full min-h-full bg-slate-200 rounded-xl">
-            <NameWithPicture />
-            <Logout />
-            {/* <!-- nav goes here --> */}
+        <div className="w-fixed w-full flex-shrink flex-grow-0 px-4 max-h-screen">
+          <div className="fixed h-[95%]">
+            <div className="sticky top-0 p-4 w-full min-h-full bg-slate-200 rounded-xl">
+              <NameWithPicture />
+              <Logout />
+              {/* <!-- nav goes here --> */}
+            </div>
           </div>
         </div>
         <main role="main" className="w-full flex-grow pt-1 px-16">

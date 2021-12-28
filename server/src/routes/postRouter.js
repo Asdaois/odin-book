@@ -6,10 +6,12 @@ import {
   updatePost,
   likePost,
   deletePost,
+  getPosts
 } from "../controllers/postController.js";
 
 // -- POST ROUTES --
 
+postRouter.get('/', getPosts);
 // Base route
 postRouter.get("/:id", getPost);
 // Create route

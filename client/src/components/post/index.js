@@ -1,3 +1,4 @@
-import Post from "./Post";
+import CreatePost from "./CreatePost";
+import Post from './Post'
 
-export default Post
+export { CreatePost, Post } 

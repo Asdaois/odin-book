@@ -9,23 +9,27 @@ import Router from "./Router";
 
 const App = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     onAuthStateChanged(auth, async (userLogged) => {
       if (userLogged) {
         const user = await userApi.getByUid(userLogged.uid);
         dispatch(updateUser(user));
-        navigate("/")
+        navigate("/");
       } else {
-        navigate("/login")
+        navigate("/login");
         dispatch(logOutUser());
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return <Router />;
+  return (
+    <div className="bg-slate-50">
+      <Router />
+    </div>
+  );
 };
 
 export default App;

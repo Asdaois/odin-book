@@ -1,6 +1,21 @@
 import Post from "../models/Post.js";
 
 /**
+ * 
+ * @param {import("express").Request} req 
+ * @param {import("express").Response} res 
+ * @param {import("express").NextFunction} next 
+ */
+export const getPosts = async (req, res, next) => {
+  // Todo: Get more 
+  try {
+    const lastPosts = await Post.find().limit(5).populate('userID')
+    res.json(lastPosts)
+  } catch (error) {
+    next(error);
+  }
+}
+/**
  * @param {import("express").Request} req
  * @param {Response} res
  * @param {NextFunction} next
@@ -21,7 +36,6 @@ const getPost = async (req, res, next) => {
  * @param {NextFunction} next
  */
 const createPost = async (req, res, next) => {
-  console.log(req.body);
   //   const { userID, date, content } = req.params;
 
   const post = new Post({
