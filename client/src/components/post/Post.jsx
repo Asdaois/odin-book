@@ -4,7 +4,6 @@ import { Comment, Like } from "../icons";
 import TimeAgo from "timeago-react";
 
 const Post = ({ post }) => {
-  console.log(post);
   const createAT = post.createdAt
   const date = new Date(createAT)
 

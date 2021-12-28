@@ -36,7 +36,6 @@ const getPost = async (req, res, next) => {
  * @param {NextFunction} next
  */
 const createPost = async (req, res, next) => {
-  console.log(req.body);
   //   const { userID, date, content } = req.params;
 
   const post = new Post({
