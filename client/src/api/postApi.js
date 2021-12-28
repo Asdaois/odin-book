@@ -1,9 +1,15 @@
 import axiosApi from "./axiosApi";
 
-const create = (post) => {
-  const response = axiosApi.post("posts/create", post);
+const create = async (post) => {
+  const response = await axiosApi.post("posts/create", post);
   // TODO: Handle response
   return response;
 };
 
-export const postApi = { create };
+const getLasts = async () => {
+  const response = await axiosApi.get('posts')
+  // TODO: Handle response
+  return response.data;
+}
+
+export const postApi = { create, getLasts };

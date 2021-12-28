@@ -13,7 +13,6 @@ export const signUpUser = createAsyncThunk(
 
     user.dateOfBirth = newUser.dateOfBirth;
     user.gender = newUser.gender;
-    console.log(user)
     return user;
   }
 );
