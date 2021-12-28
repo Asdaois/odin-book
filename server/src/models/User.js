@@ -8,6 +8,7 @@ const UserSchema = new Schema({
   email: { type: String, required: true },
   gender: { type: String, enum: ["Male", "Female", "Other"] },
   uid: { type: String }, // Firebase login
+  avatar: {type: String } // Image to show
 });
 
 UserSchema.virtual("displayName").get(function() {
