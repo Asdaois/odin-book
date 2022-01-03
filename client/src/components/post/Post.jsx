@@ -1,7 +1,12 @@
-import React from "react";
-import ProfilePicture from "../user/profile_picture/ProfilePicture";
-import { Comment, Like } from "../icons";
-import TimeAgo from "timeago-react";
+import React from 'react';
+
+import TimeAgo from 'timeago-react';
+
+import {
+  Comment,
+  Like,
+} from '../icons';
+import ProfilePicture from '../user/profile_picture/ProfilePicture';
 
 const Post = ({ post }) => {
   const createAT = post.createdAt
@@ -21,8 +26,8 @@ const Post = ({ post }) => {
       <div className="">
         <p className="p-4">{post.content?.text}</p>
       </div>
-      <div class="relative">
-        <div class="w-[90%] m-auto border-t border-gray-300"></div>
+      <div className="relative">
+        <div className="w-[90%] m-auto border-t border-gray-300"></div>
       </div>
       <div className="flex justify-evenly my-2 w-4/5 mx-auto">
         <button className="button w-2/3 flex justify-center gap-2">
@@ -34,8 +39,8 @@ const Post = ({ post }) => {
           Like
         </button>
       </div>
-      <div class="relative ">
-        <div class="w-[90%] m-auto border-t border-gray-300"></div>
+      <div className="relative ">
+        <div className="w-[90%] m-auto border-t border-gray-300"></div>
       </div>
       <div className="h-1"></div>
     </div>
