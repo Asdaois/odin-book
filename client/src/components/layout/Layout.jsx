@@ -13,9 +13,9 @@ const Layout = ({ children }) => {
         {/* <!-- fixed-width --> */}
         <div className="w-fixed w-full flex-shrink flex-grow-0 px-4 max-h-screen hidden md:block">
           <div className="fixed h-[95%] min-w-[200px]">
-            <div className="sticky top-0 p-4 w-full min-h-full bg-slate-200 rounded-xl">
-              <SearchBar />
+            <div className="sticky top-0 p-4 w-full min-h-full bg-slate-200 rounded-xl flex flex-col gap-2">
               <NameWithPicture />
+              <SearchBar />
               <Logout />
               {/* <!-- nav goes here --> */}
             </div>

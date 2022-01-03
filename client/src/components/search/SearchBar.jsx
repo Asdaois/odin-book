@@ -27,7 +27,7 @@ export const SearchBar = () => {
     };
     console.log(searchValue)
     search();
-  }, [searchValue]);
+  }, [searchValue, user]);
 
   return (
     <div className="flex">
