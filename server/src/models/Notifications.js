@@ -11,6 +11,15 @@ const NotificationSchema = new Schema({
     type: String,
     required: true,
   },
+  type: {
+    type: String,
+    enum: ["FriendRequest", "Post", "Like", "Comment"],
+    required: true,
+  },
+  typeID: {
+    type: Schema.Types.ObjectId,
+    required: true,
+  },
   read: {
     type: Boolean,
     default: false,
