@@ -1,6 +1,9 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { userApi } from "../../api/usersApi";
+import React from 'react';
+
+import { BsPersonPlusFill } from 'react-icons/bs';
+import { useSelector } from 'react-redux';
+
+import { userApi } from '../../api/usersApi';
 
 export const FriendRequestButton = ({ friendID }) => {
   const user = useSelector((state) => state.user);
@@ -9,5 +12,5 @@ export const FriendRequestButton = ({ friendID }) => {
     userApi.sentFriendRequest(user.current._id, friendID);
   };
 
-  return <button onClick={sendRequest}>Send Friend</button>;
+  return <button onClick={sendRequest}><BsPersonPlusFill size={20}/></button>;
 };

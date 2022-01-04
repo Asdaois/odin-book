@@ -1,10 +1,12 @@
-import { useFormik } from "formik";
-import React from "react";
-import { useDispatch } from "react-redux";
-import { signUpUser } from "../../features/user/user.thunks";
-import Form from "./Form";
-import FormTitle from "./FormTitle";
-import InputText from "./InputText";
+import React from 'react';
+
+import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
+
+import { signUpUser } from '../../features/user/user.thunks';
+import Form from './Form';
+import FormTitle from './FormTitle';
+import InputText from './InputText';
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -102,7 +104,7 @@ const SignUp = () => {
             value={formik.values.dateOfBirth}
           />
         </div>
-        <button type="submit">Sign Up</button>
+        <button type="submit" className="button">Sign Up</button>
       </Form>
     </div>
   );
