@@ -1,11 +1,16 @@
-import { useFormik } from "formik";
-import React from "react";
-import { useDispatch } from "react-redux";
-import { FacebookLogIn, GoogleLogIn } from ".";
-import { signInUser } from "../../features/user/user.thunks";
-import Form from "./Form";
-import FormTitle from "./FormTitle";
-import InputText from "./InputText";
+import React from 'react';
+
+import { useFormik } from 'formik';
+import { useDispatch } from 'react-redux';
+
+import { signInUser } from '../../features/user/user.thunks';
+import {
+  FacebookLogIn,
+  GoogleLogIn,
+} from './';
+import Form from './Form';
+import FormTitle from './FormTitle';
+import InputText from './InputText';
 
 const LogIn = () => {
   const dispatch = useDispatch();
@@ -36,7 +41,7 @@ const LogIn = () => {
           name="password"
           type="password"
         />
-        <button type="submit">Log in</button>
+        <button type="submit" className="button mx-auto">Log in</button>
       </Form>
       <div className="flex flex-col gap-2">
         <div className="w-full relative mb-2">
