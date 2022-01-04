@@ -27,6 +27,7 @@ FriendRequestSchema.post("save", async (doc) => {
 
   const notification = new Notifications({
     userID: doc.receivingUserID,
+    subject: "New Friend Request!",
     message: `You've received a friend request from: ${result.firstName} ${result.lastName}! Do you want to accept it?`,
     type: "FriendRequest",
     typeID: doc._id,

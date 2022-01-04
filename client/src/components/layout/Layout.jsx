@@ -1,6 +1,7 @@
 import React from "react";
 import { Logout } from "../authentication";
 import { NameWithPicture } from "../user";
+import Notifications from "../notifications";
 import "./layout.css";
 
 const Layout = ({ children }) => {
@@ -25,6 +26,7 @@ const Layout = ({ children }) => {
           {/* <!-- fixed-width --> */}
           <div className="flex sm:flex-col px-2">
             {/* <!-- sidebar goes here --> */}
+            <Notifications />
           </div>
         </div>
       </div>

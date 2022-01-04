@@ -1,6 +1,7 @@
 import User from "../models/User.js";
 import Profile from "../models/Profile.js";
 import FriendRequest from "../models/FriendRequest.js";
+import Notifications from "../models/Notifications.js";
 
 /**
  * @param {import("express").Request} req
@@ -192,6 +193,22 @@ const getUserWithUid = async (req, res, next) => {
   }
 };
 
+/**
+ * Get user notifications
+ * @param {import("express").Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
+const getUserNotifications = async (req, res, next) => {
+  try {
+    const { userID } = req.params;
+    const notifications = await Notifications.find({ userID }).exec();
+    return res.json({ notifications });
+  } catch (err) {
+    next(err);
+  }
+};
+
 export {
   getUser,
   getProfile,
@@ -202,4 +219,5 @@ export {
   updateUser,
   deleteUser,
   getUserWithUid,
+  getUserNotifications,
 };

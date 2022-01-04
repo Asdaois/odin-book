@@ -7,6 +7,10 @@ const NotificationSchema = new Schema({
     required: true,
     ref: "User",
   },
+  subject: {
+    type: String,
+    required: true,
+  },
   message: {
     type: String,
     required: true,

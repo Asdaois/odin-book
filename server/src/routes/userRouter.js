@@ -10,6 +10,7 @@ import {
   updateUser,
   deleteUser,
   getUserWithUid,
+  getUserNotifications,
 } from "../controllers/userController.js";
 
 // -- USER ROUTES --
@@ -24,6 +25,8 @@ userRouter.get("/profile/:id", getProfile);
 userRouter.get("/friends/:id", getFriendList);
 //Search user
 userRouter.get("/search/:name/:userUID", getSearchResult);
+//Notifications
+userRouter.get("/notifications/:userID", getUserNotifications);
 //Send friend request route
 userRouter.post("/request/:userID/:friendID", sendFriendRequest);
 //Create new user route
