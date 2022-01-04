@@ -6,6 +6,7 @@ import {
   getFriendList,
   getSearchResult,
   sendFriendRequest,
+  handleFriendRequest,
   createNewUser,
   updateUser,
   deleteUser,
@@ -29,6 +30,8 @@ userRouter.get("/search/:name/:userUID", getSearchResult);
 userRouter.get("/notifications/:userID", getUserNotifications);
 //Send friend request route
 userRouter.post("/request/:userID/:friendID", sendFriendRequest);
+//Handle friend request route
+userRouter.put("/request/:requestID/:choice", handleFriendRequest);
 //Create new user route
 userRouter.post("/create", createNewUser);
 //Update user route

@@ -97,6 +97,33 @@ const sendFriendRequest = async (req, res, next) => {
 };
 
 /**
+ * Accept friend request
+ * @param {import("express").Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
+const handleFriendRequest = async (req, res, next) => {
+  try {
+    const { requestID, choice } = req.params;
+    const request = await FriendRequest.findById(requestID);
+    request.status = choice;
+    await request.save();
+
+    await Profile.findByIdAndUpdate(request.receivingUserID, {
+      $addToSet: { friends: request.requestingUserID },
+    }).exec();
+
+    await Profile.findByIdAndUpdate(request.requestingUserID, {
+      $addToSet: { friends: request.receivingUserID },
+    }).exec();
+
+    res.json({ message: `Request ${choice}` });
+  } catch (err) {
+    next(err);
+  }
+};
+
+/**
  * @param {import("express").Request} req
  * @param {Response} res
  * @param {NextFunction} next
@@ -215,6 +242,7 @@ export {
   getFriendList,
   getSearchResult,
   sendFriendRequest,
+  handleFriendRequest,
   createNewUser,
   updateUser,
   deleteUser,

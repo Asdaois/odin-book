@@ -22,6 +22,11 @@ const sentFriendRequest = async (userID, friendID) => {
   return console.log(response.data);
 };
 
+const handleFriendRequest = async (requestID, choice) => {
+  const response = await axiosApi.put(`users/request/${requestID}/${choice}`);
+  return console.log(response.data);
+};
+
 const getNotifications = async (userID) => {
   const response = await axiosApi.get(`users/notifications/${userID}`);
   return response.data.notifications;
@@ -33,4 +38,5 @@ export const userApi = {
   search,
   sentFriendRequest,
   getNotifications,
+  handleFriendRequest,
 };
