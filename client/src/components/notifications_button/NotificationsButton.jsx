@@ -1,7 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { userApi } from "../../api/usersApi.js";
+import React, {
+  useEffect,
+  useState,
+} from 'react';
 
-export const NotifitationsButton = ({ type, typeID, read }) => {
+import { userApi } from '../../api/usersApi.js';
+
+export const NotificationsButton = ({ type, typeID, read }) => {
   const [button, setButton] = useState("");
 
   const handleFriendRequest = async (choice) => {

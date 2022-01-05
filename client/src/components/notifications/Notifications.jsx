@@ -6,6 +6,9 @@ import React, {
 import { useSelector } from 'react-redux';
 
 import { userApi } from '../../api/usersApi.js';
+import {
+  NotificationsButton,
+} from '../notifications_button/NotificationsButton';
 
 export const Notifications = () => {
   const user = useSelector((state) => state.user);
@@ -30,7 +33,7 @@ export const Notifications = () => {
             <div>
               <strong>{value.subject}</strong>
               <p>{value.message}</p>
-              <NotifitationsButton
+              <NotificationsButton
                 type={value.type}
                 typeID={value.typeID}
                 read={value.read}
