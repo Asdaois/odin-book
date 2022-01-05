@@ -30,6 +30,11 @@ export const Notifications = () => {
             <div>
               <strong>{value.subject}</strong>
               <p>{value.message}</p>
+              <NotifitationsButton
+                type={value.type}
+                typeID={value.typeID}
+                read={value.read}
+              />
             </div>
           );
         })
