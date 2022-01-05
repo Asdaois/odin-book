@@ -16,13 +16,11 @@ const Posts = () => {
     dispatch(getLastPosts());
   }, [dispatch]);
 
-  useEffect(() => {
-    console.log(posts)
-  }, [posts])
-
   return (
     <div>
-      {posts.lasts?.map((post)=> <Post post={post} key={posts._id}/>)}
+      {posts && posts.lasts.map((post) => (
+        <Post post={post} key={post._id} />
+      ))}
     </div>
   );
 };

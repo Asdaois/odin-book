@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 function InputText({ formik, name, displayText, type }) {
   return (
@@ -10,6 +10,7 @@ function InputText({ formik, name, displayText, type }) {
         onBlur={formik.handleBlur}
         value={formik.values[name]}
         className="block w-full appearance-none focus:outline-none bg-transparent peer"
+        autoComplete="on"
         required
       />
       <label

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TimeAgo from 'timeago-react';
+import moment from 'moment';
 
 import {
   Comment,
@@ -19,7 +19,8 @@ const Post = ({ post }) => {
         <div className="flex flex-col ml-2">
           <span>{post.userID.displayName}</span>
           <span className="text-xs">
-            <TimeAgo datetime={date} datatype='' />
+            {/* <TimeAgo datetime={date} locale="en" /> */}
+            <div className="">{moment(date).fromNow()}</div>
           </span>
         </div>
       </div>

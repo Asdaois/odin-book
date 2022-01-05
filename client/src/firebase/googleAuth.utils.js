@@ -1,8 +1,9 @@
 import {
-  signInWithPopup,
   GoogleAuthProvider,
-} from "firebase/auth";
-import { auth } from "./firebase.utils";
+  signInWithPopup,
+} from 'firebase/auth';
+
+import { auth } from './firebase.utils';
 
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({ prompt: "select_account" });

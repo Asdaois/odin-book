@@ -25,7 +25,6 @@ export const SearchBar = () => {
         setSearchResult([])
       }
     };
-    console.log(searchValue)
     search();
   }, [searchValue, user]);
 

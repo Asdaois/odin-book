@@ -1,6 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { userApi } from "../../api/usersApi.js";
-import { useSelector } from "react-redux";
+import React, {
+  useEffect,
+  useState,
+} from 'react';
+
+import { useSelector } from 'react-redux';
+
+import { userApi } from '../../api/usersApi.js';
 
 export const Notifications = () => {
   const user = useSelector((state) => state.user);
@@ -9,7 +14,9 @@ export const Notifications = () => {
 
   useEffect(() => {
     const getRequest = async () => {
-      setNotificationsArray(await userApi.getNotifications(user.current._id));
+      if (user.current) {
+        setNotificationsArray(await userApi.getNotifications(user.current._id));
+      }
     };
 
     getRequest();
