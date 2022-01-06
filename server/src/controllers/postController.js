@@ -1,4 +1,4 @@
-import Post from "../models/Post.js";
+import Post from '../models/Post.js';
 
 /**
  *
@@ -112,7 +112,7 @@ const likePost = async (req, res, next) => {
   const { id } = req.params;
   const { userID } = req.body;
   try {
-    await Post.findByIdAndUpdate(
+    Post.findByIdAndUpdate(
       id,
       {
         $addToSet: { likedBy: userID },
@@ -143,4 +143,4 @@ const deletePost = async (req, res, next) => {
   res.json({ message: `Post ${req.params.id} deleted!` });
 };
 
-export { getPost, createPost, createComment, updatePost, likePost, deletePost };
+export { createComment, createPost, deletePost, getPost, likePost, updatePost };

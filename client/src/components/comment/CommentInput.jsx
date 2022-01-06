@@ -2,16 +2,24 @@ import React from 'react';
 
 import { useSelector } from 'react-redux';
 
+import { postApi } from '../../api/postApi';
 import ProfilePicture from '../user/profile_picture';
 
 const CommentInput = ({ postID }) => {
   const user = useSelector((state) => state.user);
+
   /**
    * @param {React.FormEvent<HTMLFormElement>} e
    */
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // console.log(e.currentTarget.elements);
+    const comment = {
+      userID: e.currentTarget.userID.value,
+      content: { text: e.currentTarget["content-text"].value },
+      postType: "Comment"
+    };
+    postApi.createComment( postID, comment);
   };
 
   return (
