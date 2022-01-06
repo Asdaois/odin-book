@@ -50,6 +50,34 @@ const createPost = async (req, res, next) => {
 };
 
 /**
+ * Create comment
+ * @param {import("express").Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ */
+const createComment = async (req, res, next) => {
+  try {
+    // postType should be included in the body of the request
+    const comment = new Post({
+      ...req.body,
+    });
+    await comment.save();
+    const post = Post.findByIdAndUpdate(
+      req.params.id,
+      {
+        $addToSet: { comments: comment._id },
+      },
+      (err) => {
+        if (err) return next(err);
+        return res.json({ message: "Comment created!" });
+      }
+    );
+  } catch (err) {
+    if (err) return next(err);
+  }
+};
+
+/**
  * @param {import("express").Request} req
  * @param {Response} res
  * @param {NextFunction} next
@@ -111,4 +139,4 @@ const deletePost = async (req, res, next) => {
   res.json({ message: `Post ${req.params.id} deleted!` });
 };
 
-export { getPost, createPost, updatePost, likePost, deletePost };
+export { getPost, createPost, createComment, updatePost, likePost, deletePost };

@@ -3,19 +3,22 @@ const postRouter = express.Router();
 import {
   getPost,
   createPost,
+  createComment,
   updatePost,
   likePost,
   deletePost,
-  getPosts
+  getPosts,
 } from "../controllers/postController.js";
 
 // -- POST ROUTES --
 
-postRouter.get('/', getPosts);
+postRouter.get("/", getPosts);
 // Base route
 postRouter.get("/:id", getPost);
 // Create route
 postRouter.post("/create", createPost);
+// Create comment route
+postRouter.put("/comment/:id", createComment);
 // Update route
 postRouter.put("/update/:id", updatePost);
 // Like route
