@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import moment from "moment";
+import moment from 'moment';
 
-import { CommentInput } from "../comment";
-import { CommentIcon, Like } from "../icons";
-import ProfilePicture from "../user/profile_picture/ProfilePicture";
+import ButtonLike from '../button_like';
+import { CommentInput } from '../comment';
+import { CommentIcon } from '../icons';
+import ProfilePicture from '../user/profile_picture';
 
 const Post = ({ post }) => {
   const [showInputComment, setShowInputComment] = useState(false);
@@ -40,10 +41,7 @@ const Post = ({ post }) => {
           <CommentIcon />
           Comment
         </button>
-        <button className="button w-1/3 flex justify-center gap-2">
-          <Like />
-          Like
-        </button>
+        <ButtonLike postID={post._id} />
       </div>
 
       <div className="relative ">
