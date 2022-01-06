@@ -115,7 +115,7 @@ const likePost = async (req, res, next) => {
     await Post.findByIdAndUpdate(
       id,
       {
-        $addToSet: { likedBy: { userID } },
+        $addToSet: { likedBy: userID },
       },
       (err) => {
         if (err) return next(err);
