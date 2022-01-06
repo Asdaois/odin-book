@@ -62,7 +62,7 @@ const createComment = async (req, res, next) => {
       ...req.body,
     });
     await comment.save();
-    const post = Post.findByIdAndUpdate(
+    Post.findByIdAndUpdate(
       req.params.id,
       {
         $addToSet: { comments: comment._id },
@@ -100,27 +100,28 @@ const updatePost = async (req, res, next) => {
 };
 
 /**
+ * Like a post
  * @param {import("express").Request} req
  * @param {Response} res
  * @param {NextFunction} next
  */
 const likePost = async (req, res, next) => {
-  //   const { postID, userID, liked } = req.params;
-  //   try {
-  //     const post = await Post.findByIdAndUpdate(
-  //       postID,
-  //       {
-  //         $addToSet: { likedBy: { userID, liked } },
-  //       },
-  //       (err) => {
-  //         if (err) return next(err);
-  //         res.json({ message: `Post liked` });
-  //       }
-  //     );
-  //   } catch (err) {
-  //     if (err) return next(err);
-  //   }
-  res.json({ message: "Post liked!" });
+  const { id } = req.params;
+  const { userID } = req.body;
+  try {
+    await Post.findByIdAndUpdate(
+      id,
+      {
+        $addToSet: { likedBy: { userID } },
+      },
+      (err) => {
+        if (err) return next(err);
+        res.json({ message: `Post ${id} liked` });
+      }
+    );
+  } catch (err) {
+    if (err) return next(err);
+  }
 };
 
 /**
