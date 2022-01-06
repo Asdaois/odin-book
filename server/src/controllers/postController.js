@@ -1,4 +1,4 @@
-import Post from '../models/Post.js';
+import Post from "../models/Post.js";
 
 /**
  *
@@ -133,14 +133,23 @@ const likePost = async (req, res, next) => {
  * @param {NextFunction} next
  */
 const deletePost = async (req, res, next) => {
-  await Post.findByIdAndDelete(req.params.id, (err) => {
-    if (err) {
-      return next(err);
-    }
-    res.json({ message: `Post ${req.params.id} deleted!` });
-  });
+  try {
+    const { id } = req.params;
+    const post = await Post.findById(id).exec();
 
-  res.json({ message: `Post ${req.params.id} deleted!` });
+    if (post === null) {
+      let error = new Error("Post not found");
+      error.status = 404;
+      return next(error);
+    }
+
+    await post.remove((err) => {
+      if (err) return next(err);
+      return res.json({ message: `Post deleted` });
+    });
+  } catch (err) {
+    if (err) return next(err);
+  }
 };
 
 export { createComment, createPost, deletePost, getPost, likePost, updatePost };

@@ -24,10 +24,18 @@ const PostSchema = new Schema(
   { timestamps: true }
 );
 
-PostSchema.post("remove", (doc) => {
-  if (doc.postType !== "SubComment") {
+PostSchema.post("remove", async (doc) => {
+  if (doc.postType !== "SubComment" && doc.comments.length > 0) {
     doc.comments.forEach(async (comment) => {
-      await comment.remove();
+      const c = await Post.findById(comment._id).exec();
+      if (c !== null) await c.remove();
+    });
+  }
+
+  if (doc.postType !== "Post") {
+    const post = await Post.findOne({ comments: doc._id });
+    await Post.findByIdAndUpdate(post._id, {
+      $pull: { comments: doc._id },
     });
   }
 });
