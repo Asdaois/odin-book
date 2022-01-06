@@ -12,24 +12,14 @@ const PostSchema = new Schema(
       image: String,
       text: String,
     },
-    likes: { type: Number },
-    comments: [
-      {
-        userID: Schema.Types.ObjectId,
-        content: {
-          image: String,
-          text: String,
-        },
-        likes: Number,
-        date: Date,
-      },
-    ],
-    likedBy: [
-      {
-        userID: Schema.Types.ObjectId,
-        liked: Boolean,
-      },
-    ],
+    comments: [{ type: Schema.Types.ObjectId, ref: "Post" }],
+    likedBy: [{ type: Schema.Types.ObjectId, ref: "User" }],
+    postType: {
+      type: String,
+      enum: ["Post", "Comment", "SubComment"],
+      required: true,
+      default: "Post",
+    },
   },
   { timestamps: true }
 );

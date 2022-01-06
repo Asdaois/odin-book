@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import moment from 'moment';
+import moment from "moment";
 
-import { CommentInput } from '../comment';
-import {
-  CommentIcon,
-  Like,
-} from '../icons';
-import ProfilePicture from '../user/profile_picture/ProfilePicture';
+import { CommentInput } from "../comment";
+import { CommentIcon, Like } from "../icons";
+import ProfilePicture from "../user/profile_picture/ProfilePicture";
 
 const Post = ({ post }) => {
   const [showInputComment, setShowInputComment] = useState(false);
@@ -19,7 +16,7 @@ const Post = ({ post }) => {
       <div className="flex items-center  pb-0">
         <ProfilePicture pictureLink={post.userID?.avatar} />
         <div className="flex flex-col ml-2">
-          <span>{post.userID.displayName}</span>
+          <span>{post.userID?.displayName}</span>
           <span className="text-xs">
             {/* <TimeAgo datetime={date} locale="en" /> */}
             <div className="">{moment(date).fromNow()}</div>
@@ -55,7 +52,7 @@ const Post = ({ post }) => {
       <div className="h-1"></div>
 
       <div className={`${showInputComment ? "block" : "hidden"}`}>
-        <CommentInput postID={post._id}/>
+        <CommentInput postID={post._id} />
       </div>
     </div>
   );

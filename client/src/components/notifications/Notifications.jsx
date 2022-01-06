@@ -1,14 +1,9 @@
-import React, {
-  useEffect,
-  useState,
-} from 'react';
+import React, { useEffect, useState } from "react";
 
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 
-import { userApi } from '../../api/usersApi.js';
-import {
-  NotificationsButton,
-} from '../notifications_button/NotificationsButton';
+import { userApi } from "../../api/usersApi.js";
+import { NotificationsButton } from "../notifications_button/NotificationsButton";
 
 export const Notifications = () => {
   const user = useSelector((state) => state.user);
@@ -30,7 +25,7 @@ export const Notifications = () => {
       setNotifications(
         notificationsArray.map((value) => {
           return (
-            <div>
+            <div key={value._id}>
               <strong>{value.subject}</strong>
               <p>{value.message}</p>
               <NotificationsButton

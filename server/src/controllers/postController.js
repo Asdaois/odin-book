@@ -1,20 +1,20 @@
 import Post from "../models/Post.js";
 
 /**
- * 
- * @param {import("express").Request} req 
- * @param {import("express").Response} res 
- * @param {import("express").NextFunction} next 
+ *
+ * @param {import("express").Request} req
+ * @param {import("express").Response} res
+ * @param {import("express").NextFunction} next
  */
 export const getPosts = async (req, res, next) => {
-  // Todo: Get more 
+  // Todo: Get more
   try {
-    const lastPosts = await Post.find().limit(5).populate('userID')
-    res.json(lastPosts)
+    const lastPosts = await Post.find().limit(5).populate("userID");
+    res.json(lastPosts);
   } catch (error) {
     next(error);
   }
-}
+};
 /**
  * @param {import("express").Request} req
  * @param {Response} res
