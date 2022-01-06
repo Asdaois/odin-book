@@ -109,10 +109,10 @@ const updatePost = async (req, res, next) => {
  * @param {NextFunction} next
  */
 const likePost = async (req, res, next) => {
-  const { id } = req.params;
-  const { userID } = req.body;
   try {
-    Post.findByIdAndUpdate(
+    const { id } = req.params;
+    const { userID } = req.body;
+    await Post.findByIdAndUpdate(
       id,
       {
         $addToSet: { likedBy: userID },
