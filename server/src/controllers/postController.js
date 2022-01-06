@@ -9,7 +9,10 @@ import Post from '../models/Post.js';
 export const getPosts = async (req, res, next) => {
   // Todo: Get more
   try {
-    const lastPosts = await Post.find().limit(5).populate('userID').populate('comments');
+    const lastPosts = await Post.find({ postType: 'Post' })
+      .limit(5)
+      .populate('userID')
+      .populate('comments');
     res.json(lastPosts);
   } catch (error) {
     next(error);

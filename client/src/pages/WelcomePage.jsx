@@ -7,7 +7,6 @@ import Posts from '../components/posts';
 export const WelcomePage = () => {
   return (
     <Layout>
-      {/* TODO: Crear un estilo para el search bar */}
       <CreatePost />
       <Posts />
     </Layout>

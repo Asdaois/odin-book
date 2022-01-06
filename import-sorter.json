@@ -2,8 +2,8 @@
   "autoFormat": "onSave",
   "keepUnused": ["true"],
   "wrappingStyle": {
-    "maxBindingNamesPerLine": 3,
-    "maxDefaultAndBindingNamesPerLine": 3,
+    "maxBindingNamesPerLine": 4,
+    "maxDefaultAndBindingNamesPerLine": 4,
     "maxExportNamesPerLine": 0,
     "maxNamesPerWrappedLine": 1,
     "ignoreComments": false
