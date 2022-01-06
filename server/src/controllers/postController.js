@@ -133,12 +133,12 @@ const likePost = async (req, res, next) => {
  * @param {NextFunction} next
  */
 const deletePost = async (req, res, next) => {
-  //   await Post.findByIdAndDelete(req.params.id, (err) => {
-  //     if (err) {
-  //       return next(err);
-  //     }
-  //     res.json({ message: `Post ${req.params.id} deleted!` });
-  //   });
+  await Post.findByIdAndDelete(req.params.id, (err) => {
+    if (err) {
+      return next(err);
+    }
+    res.json({ message: `Post ${req.params.id} deleted!` });
+  });
 
   res.json({ message: `Post ${req.params.id} deleted!` });
 };

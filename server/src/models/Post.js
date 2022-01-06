@@ -24,6 +24,14 @@ const PostSchema = new Schema(
   { timestamps: true }
 );
 
+PostSchema.post("remove", (doc) => {
+  if (doc.postType !== "SubComment") {
+    doc.comments.forEach(async (comment) => {
+      await comment.remove();
+    });
+  }
+});
+
 const Post = model("Post", PostSchema);
 
 export default Post;
