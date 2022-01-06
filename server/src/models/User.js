@@ -1,4 +1,5 @@
-import pkg from "mongoose";
+import pkg from 'mongoose';
+
 const { Schema, model } = pkg;
 
 const UserSchema = new Schema({
@@ -6,17 +7,17 @@ const UserSchema = new Schema({
   lastName: { type: String, required: true, minLength: 3 },
   dateOfBirth: { type: Date },
   email: { type: String, required: true },
-  gender: { type: String, enum: ["Male", "Female", "Other"] },
+  gender: { type: String, enum: ['Male', 'Female', 'Other'] },
   uid: { type: String }, // Firebase login
-  avatar: {type: String } // Image to show
+  avatar: { type: String }, // Image to show
 });
 
-UserSchema.virtual("displayName").get(function() {
+UserSchema.virtual('displayName').get(function () {
   return `${this.firstName} ${this.lastName}`;
 });
 
-UserSchema.set('toJSON', {getters: true})
+UserSchema.set('toJSON', { getters: true });
 
-const User = model("User", UserSchema);
+const User = model('User', UserSchema);
 
 export default User;

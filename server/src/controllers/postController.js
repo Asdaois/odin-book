@@ -1,4 +1,4 @@
-import Post from "../models/Post.js";
+import Post from '../models/Post.js';
 
 /**
  *
@@ -9,10 +9,7 @@ import Post from "../models/Post.js";
 export const getPosts = async (req, res, next) => {
   // Todo: Get more
   try {
-    const lastPosts = await Post.find()
-      .limit(5)
-      .populate("userID")
-      .populate("comments");
+    const lastPosts = await Post.find().limit(5).populate('userID').populate('comments');
     res.json(lastPosts);
   } catch (error) {
     next(error);
@@ -46,7 +43,7 @@ const createPost = async (req, res, next) => {
   });
   try {
     await post.save();
-    res.json({ message: "Post created!" });
+    res.json({ message: 'Post created!' });
   } catch (err) {
     if (err) return next(err);
   }
@@ -72,7 +69,7 @@ const createComment = async (req, res, next) => {
       },
       (err) => {
         if (err) return next(err);
-        return res.json({ message: "Comment created!" });
+        return res.json({ message: 'Comment created!' });
       }
     );
   } catch (err) {
@@ -112,16 +109,10 @@ const likePost = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { userID } = req.body;
-    await Post.findByIdAndUpdate(
-      id,
-      {
-        $addToSet: { likedBy: userID },
-      },
-      (err) => {
-        if (err) return next(err);
-        res.json({ message: `Post ${id} liked` });
-      }
-    );
+    await Post.findByIdAndUpdate(id, {
+      $addToSet: { likedBy: userID },
+    });
+    res.json({ message: `Post ${id} liked` });
   } catch (err) {
     if (err) return next(err);
   }
@@ -138,7 +129,7 @@ const deletePost = async (req, res, next) => {
     const post = await Post.findById(id).exec();
 
     if (post === null) {
-      let error = new Error("Post not found");
+      let error = new Error('Post not found');
       error.status = 404;
       return next(error);
     }
