@@ -30,7 +30,12 @@ export const getPosts = async (req, res, next) => {
  */
 const getPost = async (req, res, next) => {
   const { id } = req.params;
-  const post = await Post.findById(id).exec();
+  const post = await Post.findById(id)
+    .populate({
+      path: 'comments',
+      populate: [{ path: 'userID' }, { path: 'comments', populate: { path: 'userID' } }],
+    })
+    .exec();
   if (post === null) {
     return res.json({ message: 'Post not found', status: 'deleted' });
   }
