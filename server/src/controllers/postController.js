@@ -139,11 +139,11 @@ const likePost = async (req, res, next) => {
       const likes = post.likedBy.filter((value) => !value.equals(user));
       post.likedBy = likes;
       await post.save();
-      res.json({ message: `Post disliked`, post });
+      res.json({ post });
     } else {
       post.likedBy.push(user);
       await post.save();
-      res.json({ message: `Post liked`, post });
+      res.json({ post });
     }
   } catch (err) {
     if (err) return next(err);
