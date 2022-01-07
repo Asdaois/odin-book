@@ -46,12 +46,13 @@ const Post = ({ post }) => {
       <HorizontalLine />
       <div className="h-1"></div>
 
-      <div className={`${showInputComment ? "block" : "hidden"}`}>
+      <div className={`${showInputComment ? 'block' : 'hidden'}`}>
         <CommentInput postID={post._id} />
       </div>
 
-      <CommentContent comment={post.comments[0]} />
-      {/* {post.comments.map(comment => <CommentContent comment key={comment._id} />)} */}
+      {post.comments.map((comment) => (
+        <CommentContent comment={comment} key={comment._id} />
+      ))}
     </div>
   );
 };
