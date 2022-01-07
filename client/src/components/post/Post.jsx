@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
 import moment from 'moment';
+import { AiOutlineLike } from 'react-icons/ai';
 
 import ButtonLike from '../button_like';
-import { CommentInput } from '../comment';
+import { CommentContent, CommentInput } from '../comment';
+import HorizontalLine from '../horizontal_line';
 import { CommentIcon } from '../icons';
 import ProfilePicture from '../user/profile_picture';
 
@@ -11,6 +13,17 @@ const Post = ({ post }) => {
   const [showInputComment, setShowInputComment] = useState(false);
   const createAT = post.createdAt;
   const date = new Date(createAT);
+
+  const getNumberComments = () => {
+    // Work for two levels, consider recursive method for more deep levels
+    let numberComments = post.comments.length;
+
+    for (const comment of post.comments) {
+      numberComments += comment.comments.length;
+    }
+
+    return numberComments;
+  }
 
   return (
     <div className="w-full bg-slate-200 mt-4 rounded-xl p-4">
@@ -29,11 +42,17 @@ const Post = ({ post }) => {
         <p className="">{post.content?.text}</p>
       </div>
 
-      <div className="relative">
-        <div className="w-[90%] m-auto border-t border-gray-300"></div>
+      <div className="flex justify-between my-2">
+        <div className="flex gap-2 items-center ">
+          <AiOutlineLike size={20} />
+          {post.likedBy.length}
+        </div>
+        <div className="">{getNumberComments()} Comments</div>
       </div>
 
-      <div className="flex gap-2 justify-evenly my-2 w-4/5 mx-auto">
+      <HorizontalLine />
+
+      <div className="flex gap-2 justify-evenly my-2 w-4/5 mx-auto relative">
         <button
           className="button w-2/3 flex justify-center gap-2"
           onClick={() => setShowInputComment(true)}
@@ -44,14 +63,16 @@ const Post = ({ post }) => {
         <ButtonLike postID={post._id} />
       </div>
 
-      <div className="relative ">
-        <div className="w-[90%] m-auto border-t border-gray-300"></div>
-      </div>
+      <HorizontalLine />
       <div className="h-1"></div>
 
-      <div className={`${showInputComment ? "block" : "hidden"}`}>
+      <div className={`${showInputComment ? 'block' : 'hidden'}`}>
         <CommentInput postID={post._id} />
       </div>
+
+      {post?.comments.map((comment) => (
+        <CommentContent comment={comment} key={comment._id} />
+      ))}
     </div>
   );
 };
