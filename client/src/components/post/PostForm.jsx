@@ -1,12 +1,15 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { postApi } from "../../api/postApi";
-import { userApi } from "../../api/usersApi";
-import AutoSizeTextArea from "../custom_inputs/AutoSizeTextArea";
-import { NameWithPicture } from "../user";
+import React from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+
+import { userApi } from '../../api/usersApi';
+import { createPost } from '../../features/posts/posts.thunks';
+import AutoSizeTextArea from '../custom_inputs/AutoSizeTextArea';
+import { NameWithPicture } from '../user';
 
 const PostForm = ({ onExit }) => {
   const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   /** Handle Post submit
    * @param {React.FormEvent<HTMLFormElement>} e 
@@ -27,7 +30,7 @@ const PostForm = ({ onExit }) => {
       }
     }
     
-    postApi.create(post);
+    dispatch(createPost({post}));
     onExit()
   };
 

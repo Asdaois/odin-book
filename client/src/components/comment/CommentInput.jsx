@@ -1,12 +1,13 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { postApi } from '../../api/postApi';
+import { addCommentToPost } from '../../features/posts/posts.thunks';
 import ProfilePicture from '../user/profile_picture';
 
-const CommentInput = ({ postID, postType }) => {
+const CommentInput = ({ postID, postType, setVisible }) => {
   const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
 
   /**
    * @param {React.FormEvent<HTMLFormElement>} e
@@ -19,7 +20,11 @@ const CommentInput = ({ postID, postType }) => {
       content: { text: e.currentTarget['content-text'].value },
       postType: postType || 'Comment',
     };
-    postApi.createComment(postID, comment);
+
+    setVisible(false);
+    
+    dispatch(addCommentToPost({ postID, comment }));
+    e.currentTarget.reset();
   };
 
   return (
@@ -30,7 +35,7 @@ const CommentInput = ({ postID, postType }) => {
         method="post"
         className="w-full flex items-center"
         onSubmit={handleSubmit}
-        autoComplete='off'
+        autoComplete="off"
       >
         <input type="hidden" name="userID" value={user.current?._id} autoComplete="off" />
         <div className="rounded-3xl bg-slate-400 px-4 w-full h-10 flex items-center">

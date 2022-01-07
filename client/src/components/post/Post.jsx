@@ -70,7 +70,7 @@ const Post = ({ post }) => {
       <div className="h-1"></div>
 
       <div className={`${showInputComment ? 'block' : 'hidden'}`}>
-        <CommentInput postID={post._id} />
+        <CommentInput postID={post._id} setVisible={setShowInputComment} />
       </div>
 
       {post?.comments.map((comment) => (
