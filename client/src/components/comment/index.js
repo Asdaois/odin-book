@@ -1,3 +1,4 @@
+import CommentContent from './CommentContent';
 import CommentInput from './CommentInput';
 
-export { CommentInput };
+export { CommentContent, CommentInput };
