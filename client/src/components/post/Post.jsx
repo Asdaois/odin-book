@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import moment from 'moment';
 
 import ButtonLike from '../button_like';
-import { CommentInput } from '../comment';
+import { CommentContent, CommentInput } from '../comment';
+import HorizontalLine from '../horizontal_line';
 import { CommentIcon } from '../icons';
 import ProfilePicture from '../user/profile_picture';
 
@@ -29,9 +30,7 @@ const Post = ({ post }) => {
         <p className="">{post.content?.text}</p>
       </div>
 
-      <div className="relative">
-        <div className="w-[90%] m-auto border-t border-gray-300"></div>
-      </div>
+      <HorizontalLine />
 
       <div className="flex gap-2 justify-evenly my-2 w-4/5 mx-auto">
         <button
@@ -44,14 +43,16 @@ const Post = ({ post }) => {
         <ButtonLike postID={post._id} />
       </div>
 
-      <div className="relative ">
-        <div className="w-[90%] m-auto border-t border-gray-300"></div>
-      </div>
+      <HorizontalLine />
       <div className="h-1"></div>
 
-      <div className={`${showInputComment ? "block" : "hidden"}`}>
+      <div className={`${showInputComment ? 'block' : 'hidden'}`}>
         <CommentInput postID={post._id} />
       </div>
+
+      {post.comments.map((comment) => (
+        <CommentContent comment={comment} key={comment._id} />
+      ))}
     </div>
   );
 };
