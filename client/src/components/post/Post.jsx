@@ -50,7 +50,7 @@ const Post = ({ post }) => {
         <CommentInput postID={post._id} />
       </div>
 
-      {post.comments.map((comment) => (
+      {post?.comments.map((comment) => (
         <CommentContent comment={comment} key={comment._id} />
       ))}
     </div>
