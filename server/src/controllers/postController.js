@@ -12,7 +12,11 @@ export const getPosts = async (req, res, next) => {
     const lastPosts = await Post.find({ postType: 'Post' })
       .limit(5)
       .populate('userID')
-      .populate('comments');
+      .populate({
+        path: 'comments',
+        populate: { path: 'userID' },
+        populate: { path: 'comments', populate: { path: 'userID' } },
+      });
     res.json(lastPosts);
   } catch (error) {
     next(error);
