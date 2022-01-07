@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { addCommentToPost, addReplyComment, getLastPosts, postLiked } from './posts.thunks';
+import { addCommentToPost, getLastPosts, postLiked } from './posts.thunks';
 
 export const postsSlice = createSlice({
   name: 'posts',
@@ -11,8 +11,14 @@ export const postsSlice = createSlice({
       state.lasts = action.payload;
     },
     [addCommentToPost.fulfilled]: (state, action) => {},
-    [addReplyComment.fulfilled]: (state, action) => {},
-    [postLiked.fulfilled]: (state, action) => {},
+    [postLiked.fulfilled]: (state, action) => {
+      state.lasts = state.lasts.map((post) => {
+        if (post._id === action.payload._id) {
+          post.likedBy = action.payload.likedBy;
+        }
+        return post;
+      });
+    },
   },
 });
 

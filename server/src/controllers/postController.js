@@ -11,7 +11,7 @@ export const getPosts = async (req, res, next) => {
   // Todo: Get more
   try {
     const lastPosts = await Post.find({ postType: 'Post' })
-      .limit(5)
+      .limit(10)
       .populate('userID')
       .populate({
         path: 'comments',

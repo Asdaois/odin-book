@@ -1,15 +1,16 @@
 import React from 'react';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { postApi } from '../../api/postApi';
+import { postLiked } from '../../features/posts/posts.thunks';
 import { Like } from '../icons';
 
 const ButtonLike = ({ postID }) => {
   const user = useSelector((state) => state.user);
+  const dispatch = useDispatch()
 
   const handleClick = () => {
-    postApi.like(postID, user.current._id);
+    dispatch(postLiked({ postID, userID: user.current._id }));
   };
 
   return (

@@ -50,7 +50,7 @@ const CommentContent = ({ comment, isReply, owner }) => {
       )}
 
       <div className={`${isReplying ? 'block' : 'hidden'}`}>
-        <CommentInput postID={postID} postType={'SubComment'} />
+        <CommentInput postID={postID} postType={'SubComment'} setVisible={setIsReplying} />
       </div>
     </div>
   );
