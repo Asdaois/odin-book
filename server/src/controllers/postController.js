@@ -14,8 +14,7 @@ export const getPosts = async (req, res, next) => {
       .populate('userID')
       .populate({
         path: 'comments',
-        populate: { path: 'userID' },
-        populate: { path: 'comments', populate: { path: 'userID' } },
+        populate: [{ path: 'userID' }, { path: 'comments', populate: { path: 'userID' } }],
       });
     res.json(lastPosts);
   } catch (error) {
