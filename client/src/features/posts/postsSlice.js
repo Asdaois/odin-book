@@ -12,7 +12,14 @@ export const postsSlice = createSlice({
     },
     [addCommentToPost.fulfilled]: (state, action) => {},
     [addReplyComment.fulfilled]: (state, action) => {},
-    [postLiked.fulfilled]: (state, action) => {},
+    [postLiked.fulfilled]: (state, action) => {
+      state.lasts = state.lasts.map((post) => {
+        if (post._id === action.payload._id) {
+          post.likedBy = action.payload.likedBy;
+        }
+        return post;
+      });
+    },
   },
 });
 

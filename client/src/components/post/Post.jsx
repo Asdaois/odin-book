@@ -23,7 +23,8 @@ const Post = ({ post }) => {
     }
 
     return numberComments;
-  }
+  };
+  const numberComments = getNumberComments();
 
   return (
     <div className="w-full bg-slate-200 mt-4 rounded-xl p-4">
@@ -47,7 +48,9 @@ const Post = ({ post }) => {
           <AiOutlineLike size={20} />
           {post.likedBy.length}
         </div>
-        <div className="">{getNumberComments()} Comments</div>
+        <div className="">
+          {numberComments} Comment {numberComments === 1 ? '' : 's'}
+        </div>
       </div>
 
       <HorizontalLine />
