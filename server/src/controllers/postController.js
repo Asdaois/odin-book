@@ -10,7 +10,7 @@ export const getPosts = async (req, res, next) => {
   // Todo: Get more
   try {
     const lastPosts = await Post.find({ postType: 'Post' })
-      .limit(5)
+      .limit(10)
       .populate('userID')
       .populate({
         path: 'comments',
@@ -120,10 +120,13 @@ const likePost = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { userID } = req.body;
+
     await Post.findByIdAndUpdate(id, {
       $addToSet: { likedBy: userID },
     });
-    res.json({ message: `Post ${id} liked` });
+
+    const post = await Post.findById(id);
+    res.json(post);
   } catch (err) {
     if (err) return next(err);
   }
