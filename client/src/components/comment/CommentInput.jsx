@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { postApi } from '../../api/postApi';
 import ProfilePicture from '../user/profile_picture';
 
-const CommentInput = ({ postID }) => {
+const CommentInput = ({ postID, postType }) => {
   const user = useSelector((state) => state.user);
 
   /**
@@ -17,13 +17,13 @@ const CommentInput = ({ postID }) => {
     const comment = {
       userID: e.currentTarget.userID.value,
       content: { text: e.currentTarget['content-text'].value },
-      postType: 'Comment',
+      postType: postType || 'Comment',
     };
     postApi.createComment(postID, comment);
   };
 
   return (
-    <div className="flex justify-between items-center w-full gap-2">
+    <div className="flex justify-between items-center w-full gap-2 mb-4">
       <ProfilePicture />
       <form
         action={'' /*TODO: Here the path to the server*/}
