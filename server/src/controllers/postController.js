@@ -16,7 +16,8 @@ export const getPosts = async (req, res, next) => {
       .populate({
         path: 'comments',
         populate: [{ path: 'userID' }, { path: 'comments', populate: { path: 'userID' } }],
-      });
+      })
+      .sort([['createdAt', 'descending']]);
     res.json(lastPosts);
   } catch (error) {
     next(error);
