@@ -29,13 +29,12 @@ export const getPosts = async (req, res, next) => {
  * @param {NextFunction} next
  */
 const getPost = async (req, res, next) => {
-  //   await Post.findById(req.params.id).exec((err, result) => {
-  //     if (err) {
-  //       return next(err);
-  //     }
-  //     res.json({ message: `Post found`, post: result });
-  //   });
-  res.json({ message: `Post ${req.params.id} page` });
+  const { id } = req.params;
+  const post = await Post.findById(id).exec();
+  if (post === null) {
+    return res.json({ message: 'Post not found', status: 'deleted' });
+  }
+  return res.json(post);
 };
 
 /**
