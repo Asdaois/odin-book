@@ -1,4 +1,5 @@
 import Post from '../models/Post.js';
+import mongoose from 'mongoose';
 
 /**
  *
@@ -120,10 +121,25 @@ const likePost = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { userID } = req.body;
-    await Post.findByIdAndUpdate(id, {
-      $addToSet: { likedBy: userID },
-    });
-    res.json({ message: `Post ${id} liked` });
+
+    const post = await Post.findById(id);
+    if (post === null) {
+      let error = new Error('Post not found');
+      error.status = 404;
+      return next(error);
+    }
+    const user = mongoose.Types.ObjectId(userID);
+    const found = post.likedBy.find((value) => value.equals(user));
+    if (found !== undefined) {
+      const likes = post.likedBy.filter((value) => !value.equals(user));
+      post.likedBy = likes;
+      await post.save();
+      res.json({ message: `Post disliked`, post });
+    } else {
+      post.likedBy.push(user);
+      await post.save();
+      res.json({ message: `Post liked`, post });
+    }
   } catch (err) {
     if (err) return next(err);
   }
