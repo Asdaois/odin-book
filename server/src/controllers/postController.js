@@ -73,9 +73,14 @@ const createComment = async (req, res, next) => {
       {
         $addToSet: { comments: comment._id },
       },
-      (err) => {
+      async (err, doc) => {
         if (err) return next(err);
-        return res.json({ message: 'Comment created!' });
+        if (doc.postType === 'Post') {
+          return res.json({ post: doc });
+        } else {
+          const post = await Post.findOne({ comments: doc._id }).exec();
+          return res.json({ post });
+        }
       }
     );
   } catch (err) {
