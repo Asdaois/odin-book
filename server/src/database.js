@@ -1,14 +1,16 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
+import config from './config.js';
+import logger from './utils/logger.js';
 
-export const connectToDatabase = () => {
-  mongoose.connect(
-    "mongodb+srv://admin:ahotenus@node-crash-course.jwrc4.mongodb.net/odin-book?retryWrites=true&w=majority"
-  );
+const connectToDatabase = () => {
+  mongoose.connect(config.MONGODB_URI);
 
   const db = mongoose.connection;
 
-  db.on("error", console.error.bind(console, "connection error: "));
-  db.once("open", () => {
-    console.log("Connected successfully to database");
+  db.on('error', logger.error.bind(console, 'connection error: '));
+  db.once('open', () => {
+    logger.info('Connected successfully to database');
   });
 };
+
+export default connectToDatabase;
