@@ -1,5 +1,5 @@
-import DisplayName from "./DisplayName";
-import NameWithPicture from "./NameWithPicture";
-import ProfilePicture from "./profile_picture";
+import DisplayName from './DisplayName'
+import NameWithPicture from './NameWithPicture'
+import ProfilePicture from './profile_picture'
 
-export  { DisplayName, ProfilePicture, NameWithPicture };
+export { DisplayName, ProfilePicture, NameWithPicture }

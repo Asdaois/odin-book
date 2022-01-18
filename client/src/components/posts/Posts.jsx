@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from 'react'
 
 import {
   useDispatch,
-  useSelector,
-} from 'react-redux';
+  useSelector
+} from 'react-redux'
 
-import { getLastPosts } from '../../features/posts/posts.thunks';
-import { Post } from '../post';
+import { getLastPosts } from '../../features/posts/posts.thunks'
+import { Post } from '../post'
 
 const Posts = () => {
-  const posts = useSelector((state) => state.posts);
-  const dispatch = useDispatch();
+  const posts = useSelector((state) => state.posts)
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getLastPosts());
-  }, [dispatch]);
+    dispatch(getLastPosts())
+  }, [dispatch])
 
   return (
     <div>
@@ -22,7 +22,7 @@ const Posts = () => {
         <Post post={post} key={post._id} />
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default Posts;
+export default Posts

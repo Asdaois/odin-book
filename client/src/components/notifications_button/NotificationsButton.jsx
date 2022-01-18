@@ -1,46 +1,46 @@
 import React, {
   useEffect,
-  useState,
-} from 'react';
+  useState
+} from 'react'
 
-import { userApi } from '../../api/usersApi.js';
+import { userApi } from '../../api/usersApi.js'
 
 export const NotificationsButton = ({ type, typeID, read }) => {
-  const [button, setButton] = useState("");
+  const [button, setButton] = useState('')
 
   const handleFriendRequest = async (choice) => {
-    await userApi.handleFriendRequest(typeID, choice);
-    setButton("");
-  };
+    await userApi.handleFriendRequest(typeID, choice)
+    setButton('')
+  }
 
   useEffect(() => {
     switch (type) {
-      case "FriendRequest":
+      case 'FriendRequest':
         if (!read) {
           setButton(
             <div>
               <button
                 onClick={() => {
-                  handleFriendRequest("Accepted");
+                  handleFriendRequest('Accepted')
                 }}
               >
                 Accept
-              </button>{" "}
+              </button>{' '}
               <button
                 onClick={() => {
-                  handleFriendRequest("Rejected");
+                  handleFriendRequest('Rejected')
                 }}
               >
                 Reject
               </button>
             </div>
-          );
+          )
         } else {
-          setButton("");
+          setButton('')
         }
-        break;
+        break
     }
-  }, [type]);
+  }, [type])
 
-  return button;
-};
+  return button
+}

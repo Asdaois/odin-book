@@ -1,3 +1,3 @@
-import ButtonLike from './ButtonLike';
+import ButtonLike from './ButtonLike'
 
-export default ButtonLike;
+export default ButtonLike

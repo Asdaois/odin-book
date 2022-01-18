@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react'
 
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux'
 
-import { userApi } from "../../api/usersApi.js";
-import { NotificationsButton } from "../notifications_button/NotificationsButton";
+import { userApi } from '../../api/usersApi.js'
+import { NotificationsButton } from '../notifications_button/NotificationsButton'
 
 export const Notifications = () => {
-  const user = useSelector((state) => state.user);
-  const [notificationsArray, setNotificationsArray] = useState([]);
-  const [notifications, setNotifications] = useState("");
+  const user = useSelector((state) => state.user)
+  const [notificationsArray, setNotificationsArray] = useState([])
+  const [notifications, setNotifications] = useState('')
 
   useEffect(() => {
     const getRequest = async () => {
       if (user.current) {
-        setNotificationsArray(await userApi.getNotifications(user.current._id));
+        setNotificationsArray(await userApi.getNotifications(user.current._id))
       }
-    };
+    }
 
-    getRequest();
-  }, [user]);
+    getRequest()
+  }, [user])
 
   useEffect(() => {
     if (notificationsArray.length > 0) {
@@ -34,13 +34,13 @@ export const Notifications = () => {
                 read={value.read}
               />
             </div>
-          );
+          )
         })
-      );
+      )
     } else {
-      setNotifications("No notifications");
+      setNotifications('No notifications')
     }
-  }, [notificationsArray]);
+  }, [notificationsArray])
 
-  return <div>{notifications}</div>;
-};
+  return <div>{notifications}</div>
+}

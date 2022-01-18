@@ -1,3 +1,3 @@
-import { FriendRequestButton } from "./FriendRequestButton";
+import { FriendRequestButton } from './FriendRequestButton'
 
-export default FriendRequestButton;
+export default FriendRequestButton

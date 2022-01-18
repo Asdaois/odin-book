@@ -1,4 +1,4 @@
-import CommentIcon from './CommentIcon';
-import Like from './Like';
+import CommentIcon from './CommentIcon'
+import Like from './Like'
 
-export { CommentIcon, Like };
+export { CommentIcon, Like }

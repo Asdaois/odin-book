@@ -1,3 +1,3 @@
-import { NotifitationsButton } from "./NotifitationsButton";
+import { NotifitationsButton } from './NotifitationsButton'
 
-export default NotifitationsButton;
+export default NotifitationsButton

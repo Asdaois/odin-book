@@ -1,4 +1,4 @@
-import CreatePost from "./CreatePost";
+import CreatePost from './CreatePost'
 import Post from './Post'
 
-export { CreatePost, Post } 
+export { CreatePost, Post }
