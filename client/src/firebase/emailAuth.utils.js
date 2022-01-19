@@ -24,6 +24,7 @@ export const signUpEmail = async (newUser) => {
     await updateProfile(userCredential.user, { displayName })
     return userCredential.user.toJSON()
   } catch (error) {
+    console.log(error)
     return { error: error.message }
   }
 }

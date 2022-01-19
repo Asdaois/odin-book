@@ -3,7 +3,7 @@ import axiosApi from './axiosApi'
 const create = async (user) => {
   const response = await axiosApi.post('users/create', user)
   // TODO: Handle the response?
-  console.log(response.data)
+  return response.data
 }
 
 const search = async (string, uid) => {
@@ -19,12 +19,12 @@ const getByUid = async (uid) => {
 
 const sentFriendRequest = async (userID, friendID) => {
   const response = await axiosApi.post(`users/request/${userID}/${friendID}`)
-  return console.log(response.data)
+  return response.data
 }
 
 const handleFriendRequest = async (requestID, choice) => {
   const response = await axiosApi.put(`users/request/${requestID}/${choice}`)
-  return console.log(response.data)
+  return response.data
 }
 
 const getNotifications = async (userID) => {

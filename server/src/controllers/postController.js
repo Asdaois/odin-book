@@ -1,5 +1,5 @@
-import Post from '../models/Post.js';
 import mongoose from 'mongoose';
+import Post from '../models/Post.js';
 
 /**
  *
@@ -83,11 +83,10 @@ const createComment = async (req, res, next) => {
         if (err) return next(err);
         if (doc.postType === 'Post') {
           return res.json({ post: doc });
-        } else {
-          const post = await Post.findOne({ comments: doc._id }).exec();
-          return res.json({ post });
         }
-      }
+        const post = await Post.findOne({ comments: doc._id }).exec();
+        return res.json({ post });
+      },
     );
   } catch (err) {
     if (err) return next(err);
@@ -129,22 +128,23 @@ const likePost = async (req, res, next) => {
 
     const post = await Post.findById(id);
     if (post === null) {
-      let error = new Error('Post not found');
+      const error = new Error('Post not found');
       error.status = 404;
       return next(error);
     }
+
     const user = mongoose.Types.ObjectId(userID);
     const found = post.likedBy.find((value) => value.equals(user));
+
     if (found !== undefined) {
       const likes = post.likedBy.filter((value) => !value.equals(user));
       post.likedBy = likes;
-      await post.save();
-      res.json(post);
     } else {
       post.likedBy.push(user);
-      await post.save();
-      res.json(post);
     }
+
+    await post.save();
+    res.json(post);
   } catch (err) {
     if (err) return next(err);
   }
@@ -161,18 +161,20 @@ const deletePost = async (req, res, next) => {
     const post = await Post.findById(id).exec();
 
     if (post === null) {
-      let error = new Error('Post not found');
+      const error = new Error('Post not found');
       error.status = 404;
       return next(error);
     }
 
     await post.remove((err) => {
       if (err) return next(err);
-      return res.json({ message: `Post deleted` });
+      return res.json({ message: 'Post deleted' });
     });
   } catch (err) {
     if (err) return next(err);
   }
 };
 
-export { createComment, createPost, deletePost, getPost, likePost, updatePost };
+export {
+  createComment, createPost, deletePost, getPost, likePost, updatePost,
+};

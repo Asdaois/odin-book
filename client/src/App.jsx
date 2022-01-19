@@ -12,6 +12,7 @@ import Router from './Router'
 const App = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
   useEffect(() => {
     onAuthStateChanged(auth, async (userLogged) => {
       if (userLogged) {
@@ -26,7 +27,7 @@ const App = () => {
   }, [])
 
   return (
-    <div className='bg-slate-50'>
+    <div className='bg-slate-50 min-h-screen overflow-clip p-4'>
       <Router />
     </div>
   )
