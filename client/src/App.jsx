@@ -30,12 +30,12 @@ const App = () => {
     })
   }, [])
 
-  if (location.pathname === '/login' || user.current === null) {
+  if (location.pathname === '/login' || !!user.current) {
     return <SignInPage />
   }
 
   return (
-    <div className='bg-slate-50 min-h-screen overflow-clip p-4'>
+    <div className='bg-slate-56 min-h-screen overflow-clip p-4'>
       <Layout>
         <Router />
       </Layout>

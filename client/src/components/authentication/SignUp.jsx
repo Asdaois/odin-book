@@ -33,8 +33,7 @@ const SignUp = () => {
 
   return (
     <div
-      className='max-w-sm mx-auto rounded-lg shadow-xl overflow-hidden p-6
-      space-y-10 h-full'
+      className='max-w-sm mx-auto rounded-lg drop-shadow-xl overflow-hidden p-6 space-y-10 h-[420px] w-1/2'
     >
       <Form onSubmit={handleSubmit}>
         <FormTitle title='Sign-up' />
@@ -98,14 +97,12 @@ const SignUp = () => {
           <input
             type='date'
             name='dateOfBirth'
-            className='block bg-white border
-         border-gray-400 hover:border-gray-500  rounded shadow
-          leading-tight focus:outline-none focus:shadow-outline'
+            className='block bg-white border border-gray-400 hover:border-gray-500  rounded shadow leading-tight focus:outline-none focus:shadow-outline'
             onChange={handleChange}
             value={newUser.dateOfBirth}
           />
         </div>
-        <button type='submit' className='button'>Sign Up</button>
+        <button type='submit' className='btn btn-green '>Sign Up</button>
       </Form>
     </div>
   )

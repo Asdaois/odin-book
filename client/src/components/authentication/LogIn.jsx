@@ -26,8 +26,8 @@ const LogIn = () => {
   }
 
   return (
-    <div className='max-w-sm mx-auto rounded-lg shadow-xl overflow-hidden p-6
-      space-y-10 h-full'
+    <div className='max-w-sm mx-auto rounded-lg drop-shadow-xl overflow-hidden p-6
+      space-y-10 h-[420px] w-1/2'
     >
       <Form onSubmit={handleSubmit}>
         <FormTitle title='Log-in' />
@@ -45,12 +45,12 @@ const LogIn = () => {
           name='password'
           type='password'
         />
-        <button type='submit' className='button mx-auto'>Log in</button>
+        <button type='submit' className='btn btn-blue mx-auto'>Log in</button>
       </Form>
       <div className='flex flex-col gap-2'>
         <div className='w-full relative mb-2'>
           <hr />
-          <div className='text-center -translate-y-3 w-6 bg-white mx-auto'>
+          <div className='text-center -translate-y-3 w-6 bg-transparent mx-auto'>
             OR
           </div>
         </div>

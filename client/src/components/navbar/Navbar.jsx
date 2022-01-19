@@ -7,6 +7,7 @@ import { GiThreeFriends } from 'react-icons/gi'
 import { IoIosNotifications } from 'react-icons/io'
 import { useSelector } from 'react-redux'
 import { Logout } from '../authentication'
+import { AiFillHome } from 'react-icons/ai'
 
 // Styles...
 const link = 'flex items-center gap-2'
@@ -21,7 +22,7 @@ const Navbar = () => {
       <Link to={`/profile/${user?.current?._id}`}>
       <NameWithPicture />
       </Link>
-      <Link to={'/'} className={link}><IoIosNotifications className={icon} />Home</Link >
+      <Link to={'/'} className={link}><AiFillHome className={icon} />Home</Link >
       <Link to={'/notifications'} className={link}><IoIosNotifications className={icon} />Notifications</Link >
       <Link to={'/friends'} className={link}><GiThreeFriends className={icon} /> Friends</Link >
       <Link to={'/users'} className={link} ><FiUsers className={icon}/>Users</Link >

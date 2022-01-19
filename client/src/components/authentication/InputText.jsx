@@ -9,15 +9,15 @@ function InputText ({ handleChange, name, displayText, type, value }) {
         onChange={handleChange}
         value={value}
         className='block w-full appearance-none focus:outline-none bg-transparent peer'
-        autoComplete='on'
+        autoComplete='off'
         required
       />
       <label
         htmlFor='displayName'
         className={`absolute top-0 -z-1 peer-focus-within:scale-75 duration-500
         peer-focus-within:text-blue-500 peer-focus-within:-translate-y-6
-        origin-[0%]
-        ${value.length > 0 ? '-translate-y-6' : ''}
+        origin-[0%] pointer-events-none
+        ${value.length > 0 ? '-translate-y-6 text-gray-500' : ''}
         `}
       >
         {displayText}
