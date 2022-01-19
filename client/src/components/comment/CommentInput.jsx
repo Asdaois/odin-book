@@ -14,6 +14,7 @@ const CommentInput = ({ postID, postType, setVisible }) => {
    */
   const handleSubmit = async (e) => {
     e.preventDefault()
+
     // console.log(e.currentTarget.elements);
     const comment = {
       userID: e.currentTarget.userID.value,

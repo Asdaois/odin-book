@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import { useFormik } from 'formik'
 import { useDispatch } from 'react-redux'
 
 import { signUpUser } from '../../features/user/user.thunks'
@@ -10,53 +9,58 @@ import InputText from './InputText'
 
 const SignUp = () => {
   const dispatch = useDispatch()
-  const formik = useFormik({
-    initialValues: {
-      displayName: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-      dateOfBirth: Date.now(),
-      gender: 'Other'
-    },
-    onSubmit: (values) => {
-      dispatch(signUpUser(values))
-    },
-    validate: (values) => {
-      const errors = {}
-      if (values.password !== values.confirmPassword) { errors.confirmPassword = 'Passwords are different' }
-      return errors
-    },
-    validateOnChange: false,
-    validateOnBlur: false
+  const [newUser, setNewUser] = useState({
+    displayName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    dateOfBirth: Date.now(),
+    gender: 'Other'
   })
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    if (newUser.password !== newUser.confirmPassword) {
+      // TODO: provisional...
+      alert('The password are differents')
+      return
+    }
+    dispatch(signUpUser(newUser))
+  }
+
+  const handleChange = (e) => {
+    setNewUser({ ...newUser, [e.target.name]: e.target.value })
+  }
 
   return (
     <div
       className='max-w-sm mx-auto rounded-lg shadow-xl overflow-hidden p-6
       space-y-10 h-full'
     >
-      <Form onSubmit={formik.handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <FormTitle title='Sign-up' />
         <InputText
-          formik={formik}
+          value={newUser.displayName}
+          handleChange={handleChange}
           displayText='Display Name'
           name='displayName'
         />
         <InputText
-          formik={formik}
+          value={newUser.email}
+          handleChange={handleChange}
           displayText='Email'
           name='email'
           type='email'
         />
         <InputText
-          formik={formik}
+          value={newUser.password}
+          handleChange={handleChange}
           displayText='Password'
           name='password'
           type='password'
         />
         <InputText
-          formik={formik}
+          value={newUser.confirmPassword}
+          handleChange={handleChange}
           displayText='Confirm Password'
           name='confirmPassword'
           type='password'
@@ -71,9 +75,8 @@ const SignUp = () => {
          border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow
           leading-tight focus:outline-none focus:shadow-outline'
               name='gender'
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              value={formik.values.gender}
+              onChange={handleChange}
+              value={newUser.gender}
             >
               {['Other', 'Female', 'Male'].map((gender, index) => (
                 <option key={index}>{gender}</option>
@@ -98,9 +101,8 @@ const SignUp = () => {
             className='block bg-white border
          border-gray-400 hover:border-gray-500  rounded shadow
           leading-tight focus:outline-none focus:shadow-outline'
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.dateOfBirth}
+            onChange={handleChange}
+            value={newUser.dateOfBirth}
           />
         </div>
         <button type='submit' className='button'>Sign Up</button>

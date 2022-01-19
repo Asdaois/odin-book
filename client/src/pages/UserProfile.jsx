@@ -6,7 +6,7 @@ export const UserProfile = () => {
 
   return (
     <div>
-      <p>Hello from {id}'s profile!</p>
+      <p>Hello from {id}&apos;s profile!</p>
     </div>
   )
 }

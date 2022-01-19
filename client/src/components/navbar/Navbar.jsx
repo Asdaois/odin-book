@@ -18,7 +18,7 @@ const Navbar = () => {
   return (
   <div className='w-1/5 fixed top-0 left-0 min-h-screen p-4'>
     <nav className='bg-slate-200 min-h-[20vh] p-4 flex flex-col gap-4 rounded-xl'>
-      <Link to={`/profile/${user.current._id}`}>
+      <Link to={`/profile/${user?.current?._id}`}>
       <NameWithPicture />
       </Link>
       <Link to={'/'} className={link}><IoIosNotifications className={icon} />Home</Link >

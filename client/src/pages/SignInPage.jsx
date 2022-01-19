@@ -1,5 +1,5 @@
 import React from 'react'
-import { LogIn } from '../components/authentication'
+import { LogIn, SignUp } from '../components/authentication'
 
 const SignInPage = () => {
   return (
@@ -7,11 +7,9 @@ const SignInPage = () => {
       <div className='flex-1 h-[404px]'>
         <LogIn />
       </div>
-      {/*
       <div className='flex-1 h-[404px]'>
         <SignUp />
       </div>
-      */}
     </div>
   )
 }

@@ -11,7 +11,7 @@ const PostCreation = ({ onClick }) => {
         className='w-full bg-slate-400 text-xl text-left h-10 px-4 rounded-3xl hover:bg-slate-500 hover:text-gray-200'
         onClick={onClick}
       >
-        What's on your mind?
+        What&apos;s on your mind?
       </button>
     </div>
   )
