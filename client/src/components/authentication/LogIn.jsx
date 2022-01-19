@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-import { useFormik } from 'formik'
 import { useDispatch } from 'react-redux'
 
 import { signInUser } from '../../features/user/user.thunks'
@@ -15,29 +14,33 @@ import InputText from './InputText'
 const LogIn = () => {
   const dispatch = useDispatch()
 
-  const formik = useFormik({
-    initialValues: { email: '', password: '' },
-    onSubmit: (values) => {
-      dispatch(signInUser(values))
-    },
-    validateOnChange: false,
-    validateOnBlur: false
-  })
+  const [credentials, setCredentials] = useState({ email: '', password: '' })
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    dispatch(signInUser(credentials))
+  }
+
+  const handleChange = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value })
+  }
 
   return (
     <div className='max-w-sm mx-auto rounded-lg shadow-xl overflow-hidden p-6
       space-y-10 h-full'
     >
-      <Form onSubmit={formik.handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <FormTitle title='Log-in' />
         <InputText
-          formik={formik}
+          value={credentials.email}
+          handleChange={handleChange}
           displayText='Email'
           name='email'
           type='email'
         />
         <InputText
-          formik={formik}
+          value={credentials.password}
+          handleChange={handleChange}
           displayText='Password'
           name='password'
           type='password'

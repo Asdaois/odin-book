@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { FcGoogle } from 'react-icons/fc'
 
 import { signInWithGoogle } from '../../firebase/googleAuth.utils'
