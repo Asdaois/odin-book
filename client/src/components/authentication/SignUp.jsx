@@ -14,7 +14,7 @@ const SignUp = () => {
     email: '',
     password: '',
     confirmPassword: '',
-    dateOfBirth: Date.now(),
+    dateOfBirth: undefined,
     gender: 'Other'
   })
   const handleSubmit = (e) => {

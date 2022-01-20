@@ -1,7 +1,7 @@
-import User from "../models/User.js";
-import Profile from "../models/Profile.js";
-import FriendRequest from "../models/FriendRequest.js";
-import Notifications from "../models/Notifications.js";
+import User from '../models/User.js';
+import Profile from '../models/Profile.js';
+import FriendRequest from '../models/FriendRequest.js';
+import Notifications from '../models/Notifications.js';
 
 /**
  * @param {import("express").Request} req
@@ -15,7 +15,7 @@ const getUser = (req, res, next) => {
   //     }
   //     res.json({ result });
   //   });
-  res.status(200).json({ message: "User Index" });
+  res.status(200).json({ message: 'User Index' });
 };
 
 /**
@@ -30,7 +30,7 @@ const getProfile = (req, res, next) => {
   //     }
   //     res.json({ result });
   //   });
-  res.status(200).json({ message: "User Profile" });
+  res.status(200).json({ message: 'User Profile' });
 };
 
 /**
@@ -60,7 +60,7 @@ const getSearchResult = async (req, res, next) => {
     uid: { $not: { $regex: userUID } },
     $or: [{ firstName: { $regex: name } }, { lastName: { $regex: name } }],
   })
-    .select(["firstName", "lastName"])
+    .select(['firstName', 'lastName'])
     .exec();
   res.json({ message: `searched ${name}`, result });
 };
@@ -83,13 +83,13 @@ const sendFriendRequest = async (req, res, next) => {
       const friendRequest = new FriendRequest({
         requestingUserID: userID,
         receivingUserID: friendID,
-        status: "Pending",
+        status: 'Pending',
       });
 
       await friendRequest.save();
       res.json({ message: `Request sent to ${friendID} from ${userID}` });
     } else {
-      res.json({ message: `Friend request already sent` });
+      res.json({ message: 'Friend request already sent' });
     }
   } catch (err) {
     next(err);
@@ -129,32 +129,26 @@ const handleFriendRequest = async (req, res, next) => {
  * @param {NextFunction} next
  */
 const createNewUser = async (req, res, next) => {
-  const { displayName, dateOfBirth, email, gender, uid } = req.body;
+  const { displayName, uid } = req.body;
 
   let user = null;
 
   if (uid) user = await User.findOne({ uid });
 
   if (displayName !== undefined && !user) {
-    const splitName = displayName.split(" ");
+    const splitName = displayName.split(' ');
     const firstName = splitName[0];
-    const lastName = splitName[1];
+    const lastName = splitName[1] || '   '; // TODO: hotfix @LuisDanielCova technical debt
+
     try {
-      const user = new User({
-        uid: uid,
-        firstName,
-        lastName,
-        dateOfBirth,
-        email,
-        gender,
-      });
-      await user.save();
-      res.json({ message: "User created" });
+      const createdUser = new User({ ...req.body, firstName, lastName });
+      await createdUser.save();
+      res.json({ message: 'User created' });
     } catch (err) {
       next(err);
     }
   } else {
-    res.json({ message: "Error creating the user" });
+    res.json({ message: 'Error creating the user' });
   }
 };
 
@@ -187,7 +181,7 @@ const updateUser = async (req, res, next) => {
   // } catch (err) {
   //   next(err);
   // }
-  res.status(200).json({ message: "User updated" });
+  res.status(200).json({ message: 'User updated' });
 };
 
 /**
@@ -202,7 +196,7 @@ const deleteUser = async (req, res, next) => {
   //   }
   //   res.json({ message: "User deleted" });
   // });
-  res.status(200).json({ message: "User deleted" });
+  res.status(200).json({ message: 'User deleted' });
 };
 
 /**

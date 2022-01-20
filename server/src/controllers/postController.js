@@ -57,7 +57,7 @@ const createPost = async (req, res, next) => {
     await post.save();
     res.json({ message: 'Post created!' });
   } catch (err) {
-    if (err) return next(err);
+    if (err) { return next(err); }
   }
 };
 

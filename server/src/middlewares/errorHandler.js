@@ -2,6 +2,7 @@ import logger from '../utils/logger.js';
 
 const errorHandler = (error, _request, response, next) => {
   logger.error('Error: ', error._message ?? error.message);
+  logger.error(error.message);
   logger.error('---');
 
   let status = error.status || 200;

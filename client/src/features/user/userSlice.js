@@ -10,13 +10,13 @@ export const userSlice = createSlice({
   name: 'user',
   initialState: {
     current: null,
-    status: 'pending'
+    status: 'notLogged'
   },
   reducers: {
     updateUser: authenticationSuccess,
     logOutUser: (state) => {
       state.current = null
-      state.status = 'pending'
+      state.status = 'notLogged'
     }
   },
   extraReducers: {
