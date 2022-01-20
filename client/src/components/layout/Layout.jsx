@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
     <div className='flex justify-center'>
       <Navbar />
       <main className='flex flex-col w-2/5 justify-self-center '>
-      {children}
+        {children}
       </main>
     </div>
   )

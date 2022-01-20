@@ -17,18 +17,18 @@ const Navbar = () => {
   const user = useSelector(state => state.user)
 
   return (
-  <div className='w-1/5 fixed top-0 left-0 min-h-screen p-4'>
-    <nav className='bg-slate-200 min-h-[20vh] p-4 flex flex-col gap-4 rounded-xl'>
-      <Link to={`/profile/${user?.current?._id}`}>
-      <NameWithPicture />
-      </Link>
-      <Link to={'/'} className={link}><AiFillHome className={icon} />Home</Link >
-      <Link to={'/notifications'} className={link}><IoIosNotifications className={icon} />Notifications</Link >
-      <Link to={'/friends'} className={link}><GiThreeFriends className={icon} /> Friends</Link >
-      <Link to={'/users'} className={link} ><FiUsers className={icon}/>Users</Link >
-      <div className={`${link} hover:cursor-pointer`}><FiLogOut className={icon} /><Logout /></div>
-    </nav>
-  </div>
+    <div className='w-1/5 fixed top-0 left-0 min-h-screen p-4'>
+      <nav className='bg-slate-200 min-h-[20vh] p-4 flex flex-col gap-4 rounded-xl'>
+        <Link to={`/profile/${user?.current?._id}`}>
+          <NameWithPicture />
+        </Link>
+        <Link to='/' className={link}><AiFillHome className={icon} />Home</Link>
+        <Link to='/notifications' className={link}><IoIosNotifications className={icon} />Notifications</Link>
+        <Link to='/friends' className={link}><GiThreeFriends className={icon} /> Friends</Link>
+        <Link to='/users' className={link}><FiUsers className={icon} />Users</Link>
+        <div className={`${link} hover:cursor-pointer`}><FiLogOut className={icon} /><Logout /></div>
+      </nav>
+    </div>
   )
 }
 

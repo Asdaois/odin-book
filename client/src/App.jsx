@@ -20,6 +20,7 @@ const App = () => {
   useEffect(() => {
     onAuthStateChanged(auth, async (userLogged) => {
       if (userLogged) {
+        // TODO: this don't work the authentication require changes
         const user = await userApi.getByUid(userLogged.uid)
         dispatch(updateUser(user))
         navigate('/')
@@ -35,7 +36,7 @@ const App = () => {
   }
 
   return (
-    <div className='bg-slate-56 min-h-screen overflow-clip p-4'>
+    <div className='bg-slate-50 min-h-screen overflow-clip p-4'>
       <Layout>
         <Router />
       </Layout>
