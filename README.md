@@ -1,15 +1,15 @@
 # ODIN-BOOK
 
-Clon de facebook con el cual puedes crear blogs que otros usuarios pueden ver, puedes tener amigos que tendran prioridad para ver tus posts para que no se lo pierdan
+Facebook clone where you can create blogs other users can see, you can also add friends who'll have priority to see your posts.
 
-Tecnologia base MERT stack, Mongoose Express React y Node 
+Base technology: MERN stack, Mongoose Express React & Node
 
-Tecnologias adicionales 
+Additional Technologies:
 - TailwindCSS
 - Redux
-- Firebase para facilitar la authenticacion, planes para cambiarlo a passportjs
+- Firebase for authentication, there are plans to change to passportjs in the future.
 
-## Hostend in Heroku y gh-pages
+## Hostend in Heroku & gh-pages
 
 [Heroku deploy](this is a link)
 
@@ -17,9 +17,9 @@ Tecnologias adicionales
 
 ## How to use
 
-Go to some of the differents deploy login and enjoy 
+Just enter one of the links above, login and enjoy!
 
-## Developed for
+## Developed by
 
 [@Asdaois](https://github.com/Asdaois/)
 
