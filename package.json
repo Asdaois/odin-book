@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "deploy-server:heroku": "heroku git:remote -a odin-book-server && git subtree push --prefix server heroku master",
-    "deploy-client:heroku": "heroku git:remote -a odin-book-client && git subtree push --prefix client heroku master",
+    "predeploy": "cd client && npm run deploy",
+    "deploy": "npm run predeploy && heroku git:remote -a odin-book-server && git subtree push --prefix server heroku master",
     "dev": "concurrently npm:dev:*",
     "dev:client": "cd client && npm run start",
     "dev:server": "cd server && npm run dev"

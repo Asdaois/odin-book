@@ -13,7 +13,7 @@ if (NODE_ENV === 'test') {
   MONGODB_URI = 'mongodb://127.0.0.1:27017/odin-book';
 }
 
-const { PORT } = process.env;
+const PORT = process.env.PORT ?? 3001;
 
 export default {
   MONGODB_URI,
