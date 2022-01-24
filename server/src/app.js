@@ -16,6 +16,7 @@ app.use(
     origin: [
       'https://odin-book-client.herokuapp.com/',
       'http://localhost:3000',
+      'https://asdaois.github.io/odin-book/',
     ],
   }),
 );
