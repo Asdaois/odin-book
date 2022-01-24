@@ -14,9 +14,9 @@ connectToDatabase();
 app.use(
   cors({
     origin: [
-      'https://odin-book-client.herokuapp.com/',
       'http://localhost:3000',
-      'https://asdaois.github.io/odin-book/',
+      'https://asdaois.github.io/',
+      'https://asdaois.github.io/odin-book',
     ],
   }),
 );

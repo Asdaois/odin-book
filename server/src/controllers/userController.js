@@ -6,9 +6,8 @@ import Notifications from '../models/Notifications.js';
 /**
  * @param {import("express").Request} req
  * @param {Response} res
- * @param {NextFunction} next
  */
-const getUser = (req, res, next) => {
+const getUser = (_req, res) => {
   // await User.find({ _id: req.params.id }).exec((err, result) => {
   //     if (err) {
   //       return next(err);
@@ -23,7 +22,7 @@ const getUser = (req, res, next) => {
  * @param {Response} res
  * @param {NextFunction} next
  */
-const getProfile = (req, res, next) => {
+const getProfile = (_req, res) => {
   // await Profile.find({ _id: req.params.id }).exec((err, result) => {
   //     if (err) {
   //       return next(err);
@@ -38,7 +37,7 @@ const getProfile = (req, res, next) => {
  * @param {Response} res
  * @param {NextFunction} next
  */
-const getFriendList = (req, res, next) => {
+const getFriendList = (_req, res) => {
   // await Profile.find({ _id: req.params.id })
   //   .select("friends")
   //   .populate({
@@ -53,7 +52,7 @@ const getFriendList = (req, res, next) => {
  * @param {Response} res
  * @param {NextFunction} next
  */
-const getSearchResult = async (req, res, next) => {
+const getSearchResult = async (req, res) => {
   const { name, userUID } = req.params;
 
   const result = await User.find({
@@ -157,7 +156,7 @@ const createNewUser = async (req, res, next) => {
  * @param {Response} res
  * @param {NextFunction} next
  */
-const updateUser = async (req, res, next) => {
+const updateUser = async (_req, res) => {
   // const {
   //   firstName,
   //   lastName,
@@ -189,7 +188,7 @@ const updateUser = async (req, res, next) => {
  * @param {Response} res
  * @param {NextFunction} next
  */
-const deleteUser = async (req, res, next) => {
+const deleteUser = async (_req, res) => {
   // await User.findOneAndDelete({ _id: req.params.id }, (err) => {
   //   if (err) {
   //     return next(err);
